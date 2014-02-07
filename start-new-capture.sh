@@ -1,8 +1,4 @@
 #!/bin/bash
-PATH="/sbin:$PATH"
-PATH_SCRIPT=/home/realitix/Projets/WifiListener
-
-# Doit être lancé par root
 
 # On stoppe l'ancien processus de capture
 #pid_status=`ps -ef | grep airodump-ng | grep -v grep | awk '{print $2}' | xargs`

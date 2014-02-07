@@ -1,9 +1,4 @@
 #!/bin/bash
-PATH="/sbin:/usr/sbin:$PATH"
-PATH_SCRIPT=/home/realitix/Projets/WifiListener
-
-
-# Doit être lancé par root
 
 # On configure l'interface wifi
 service network-manager stop

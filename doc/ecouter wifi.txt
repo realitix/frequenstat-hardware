@@ -1,0 +1,25 @@
+Comment écouter les équipement wifi ?
+
+1 - Stopper la carte wifi
+sudo service network-manager stop
+sudo service avahi-daemon stop
+sudo ifconfig wlan0 down
+
+2 - Passer la carte wifi en mode monitoring
+
+	Avec airmon-ng:
+    sudo airmon-ng start wlan0
+    Il faut tuer les processus indiquer par airmon-ng
+
+    Ou directement:
+    sudo iwconfig wlan0 essid any
+    sudo iwconfig wlan0 mode monitor
+
+3 - Ecouter les packets
+sudo airodump-ng wlan0
+
+
+DOC:
+Les beacon frame sont envoyées par le routeur pour signaler leur présence
+Les probes request sont envoyé par le client pour signaler sa précense
+Il suffit donc d'écouter les probe request pour détecter tous les clients

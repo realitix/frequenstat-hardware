@@ -1,0 +1,352 @@
+kill : option invalide -- '9'
+
+Usage:
+ kill [options] <pid> [...]
+
+Options:
+ <pid> [...]            send signal to every <pid> listed
+ -<signal>, -s, --signal <signal>
+                        specify the <signal> to be sent
+ -l, --list=[<signal>]  list all signal names, or convert one to a name
+ -L, --table            list all signal names in a nice table
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see kill(1).
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 6: pid_status : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 6: pid_status : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 6: pid_status : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 6: pid_status : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+/usr/bin/service: 123: exec: stop: not found
+/usr/bin/service: 123: exec: stop: not found
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 10: ifconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 12: iwconfig : commande introuvable
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 13: iwconfig : commande introuvable
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+toto1
+
+toto2
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 11 : [: != : opérateur unaire attendu
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 11 : [: != : opérateur unaire attendu
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 11 : [: -ge : opérateur unaire attendu
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 11 : [: -ge : opérateur unaire attendu
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-new-capture.sh: ligne 11 : [: -ge : opérateur unaire attendu
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+kill : utilisation : kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 16: airodump-ng : commande introuvable
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 16: airodump-ng : commande introuvable
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/home/realitix/Projets/WifiListener/start-capture.sh: ligne 16: airodump-ng : commande introuvable
+stop: Unknown instance: 
+stop: Unknown instance: 
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not supported.
+/sbin:/sbin:/usr/bin:/bin

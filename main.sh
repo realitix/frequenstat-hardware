@@ -15,9 +15,10 @@ fi
 
 # On assure que le PATH est complet
 export PATH="/sbin:/usr/sbin:$PATH"
-
 # Dossier contenant tous les scripts
-export PATH_SCRIPT=/home/realitix/git/tracker-hardware
+export PATH_SCRIPT="/home/realitix/git/tracker-hardware"
+# Url de l'api rest recevant les données
+export URL_API="http://localhost/api/captures"
 
 
 # On appele le bon script en fonction du STEP
@@ -29,7 +30,7 @@ then
         $PATH_SCRIPT/xml-to-json.sh
 elif [ $STEP -eq 3 ]
 then
-        $PATH_SCRIPT/send-ftp.sh
+        $PATH_SCRIPT/send-json.sh
 else
         echo "STEP invalide, il doit etre compris entre 1 et 3"
 fi

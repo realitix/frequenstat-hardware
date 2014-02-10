@@ -24,9 +24,14 @@ Le fichier xml-to-json.php gère cette partie.
 
 3 - Envoie sur le serveur
 
-Un serveur ftp doit être configuré en pré requis de ce script.
-Ce script va aller lire tous les nouveaux fichier json et les envoyer sur le serveur ftp.
-Le fichier send-ftp.sh gère cette partie.
+Le serveur est doté d'une api permettant de recevoir les nouvelles captures.
+On utilise curl pour se connecter au serveur et lui envoyer les données en JSON.
+Une sécurité a été mise en place et nécessitant l'id de l'utilisateur et sa clé associé.
+Sans ca, les données ne sont pas envoyées.
+Le script récupère le code HTTP de retour et s'il s'agit d'une erreur, il le transmet à l'API pour signaler l'erreur
+Le script peut ausi détecter l'abscence de connexion internet, dans ce cas, le script est stoppé et en attente du retour de la connexion
+
+Le fichier send-json.sh gère cette partie.
 
 4 - Processus d'exécution
 
@@ -34,18 +39,15 @@ Les logiciels suivants sont prérequis:
 	aircrack-ng (contenant airodump-ng)
 	lftp
 	php5-cli
+	curl
 
-Afin que tout se passe bien, il va falloir crééer trois taches cron décaler de deux minutes chacunes:
-	1: Appeler le fichier start-new-capture.sh
-	2: Appeler le fichier xml-to-json.php
-	3: Appeler le fichier send-ftp.sh
+Afin que tout se passe bien, il va falloir crééer trois taches cron décaler de cinq minutes chacunes, 
+un fichier main.sh a été créé pour simplifier l'appel:
+	1: 'STEP=1 main.sh'
+	2: 'STEP=2 main.sh'
+	3: 'STEP=3 main.sh'
 
 ATTENTION: Toutes ces taches doivent être exécuté en cron administrateur (root)
 
 En fonction du rafrachissement désiré pour le client, ces taches cron peuvent être exécuté toutes les heures ou tous les jours.
 Attention cependant, plus le temps est court, meilleur est la précision.
-
-5 - Amélioration
-
-Créer un seul fichier prenant en paramètre l'étape et contenant toutes les variables de configuration car ici, il y a quatres fichiers à configurer, c'est mauvais pour l'industrialisation de processus.
-

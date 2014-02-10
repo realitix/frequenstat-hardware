@@ -17,5 +17,24 @@ do
 	
 	# Si le status HTTP n'est pas égal à 200, il faut envoyer une alerte à l'api pour le signaler
 
+	# Si le status est 000 (la connexion internet ne fonctionne pas)
+	if [ $HTTP_STATUS -eq 0 ]
+	then
+		echo "Connection impossible"
+	# 404 = Code JSON mal formaté
+	elif [ $HTTP_STATUS -eq 404 ]
+	then
+        echo "JSON mal formate"
+    # 403 = Accès interdit, les fichiers de sessions sont faux
+	elif [ $HTTP_STATUS -eq 403 ]
+	then
+        echo "Mauvaise identification"
+    # 400 = Clé manquante dans le JSON
+    elif [ $HTTP_STATUS -eq 400 ]
+	then
+        echo "Cles manquantes"
+	fi
+	
+
 	#rm $PATH_SCRIPT/dump/waiting/$f
 done

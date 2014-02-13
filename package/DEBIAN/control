@@ -1,9 +1,0 @@
-Package: tracker-hardware
-Version: 0.8
-Section: base
-Priority: optional
-Architecture: all
-Depends: bash, php5-cli, aircrack-ng, curl, lftp
-Maintainer: outadoc <admin@outadoc.fr>
-Description: Affiche un truc inutile dans la console.
-Homepage: http://outadoc.fr

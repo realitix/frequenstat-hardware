@@ -1,0 +1,8 @@
+# Crontab de root contenant deux lignes
+# m h  dom mon dow   command
+
+# A chaque redémarrage, on lance le script d'initialisation de l'écoute wifi, on attend 10 secondes pour etre sur que tout soit chargé
+@reboot /bin/sleep 10 ; /root/tracker-hardware/app/init.sh
+
+# Régulièrement, on va envoyer les données sur le serveur
+* * * * * /root/tracker-hardware/app/update.sh

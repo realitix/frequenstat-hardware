@@ -27,7 +27,6 @@ def PacketHandler(p):
 		if p.type == 0 and p.subtype in stamgmtstypes:
 			print p.addr2
 
-			p = p[0]
 			while Dot11Elt in p:
 				print "Inside"
 				p = p[Dot11Elt]
@@ -35,6 +34,7 @@ def PacketHandler(p):
 					print "SSID: %s" % p.info
 				if p.ID==221:
 					print "Vendor: %s" % p.info
+				p = p.payload
 
 # With the sniffmgmt() function complete, we can invoke the Scapy sniff()
 # function, pointing to the monitor mode interface, and telling Scapy to call

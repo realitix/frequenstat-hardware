@@ -1,0 +1,5 @@
+""" Les paquets ProbeRequest renvoyés sont de la forme :
+
+<RadioTap  version=0 pad=0 RadioTap_len=18 present=Flags+Rate+Channel+dBm_AntSignal+Antenna+b14 Flags=16 Rate=12 Channel=14 Channel_flags=320 dBm_AntSignal=-44 Antenna=3 RX_Flags=0 |<Dot11  subtype=4L type=Management proto=0L FCfield= ID=0 addr1=ff:ff:ff:ff:ff:ff addr2=8c:3a:e3:93:06:06 addr3=ff:ff:ff:ff:ff:ff SC=848 addr4=None |<Dot11ProbeReq  |<Dot11Elt  ID=SSID len=7 info='ovhwifi' |<Dot11Elt  ID=Rates len=8 info='\x0c\x12\x18$0H`l' |<Dot11Elt  ID=DSset len=1 info='$' |<Dot11Elt  ID=45 len=26 info='o\x01\x17\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |<Dot11Elt  ID=127 len=8 info='\x00\x00\x00\x00\x00\x00\x00@' |<Dot11Elt  ID=191 len=12 info='2Y\x80\x0f\xfe\xff\x00\x00\xfe\xff\x00\x00' |<Dot11Elt  ID=vendor len=9 info='\x00\x10\x18\x02\x00\x00\x10\x00\x00' |<Dot11Elt  ID=vendor len=30 info='\x00\x90L3o\x01\x17\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |<Dot11Elt  ID=91 len=164 info='\xd6\x17' |>>>>>>>>>>>>
+
+"""

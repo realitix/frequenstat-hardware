@@ -25,7 +25,7 @@ def PacketHandler(p):
 	
 	# Si l'adresse mac existe, on affiche
 	if stationMac != None:
-	    print "%s%s%s%s%s" % (stationMac, separator, dateNow, separator, power)
+	    print "%s%s%s%s%s" % (stationMac, separator, power, separator, dateNow)
 	
 
 sniff(iface=interface, prn=PacketHandler)

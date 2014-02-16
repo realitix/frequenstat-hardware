@@ -1,0 +1,15 @@
+{
+	"PATH":"/sbin:/usr/sbin:$PATH",
+	"PATH_SCRIPT":"/home/realitix/git/tracker-hardware/lib",
+	"URL_API" : "http://localhost/api/captures",
+	"IFACE":"wlan0",
+	"PATH_DUMP":"/home/realitix/git/tracker-hardware/dump",
+	"PATH_SESSION":"/home/realitix/git/tracker-hardware/session",
+	"PATH_DUMP_CURRENT":"/home/realitix/git/tracker-hardware/dump/current",
+	"PATH_DUMP_TMP":"/home/realitix/git/tracker-hardware/dump/tmp",
+	"PATH_DUMP_WAITING":"/home/realitix/git/tracker-hardware/dump/waiting",
+	"FILE_CURRENT":"/home/realitix/git/tracker-hardware/dump/current/current.txt",
+	"SEPARATOR":"||",
+	"FILE_USER_ID":"/home/realitix/git/tracker-hardware/session/userId",
+	"FILE_USER_KEY":"/home/realitix/git/tracker-hardware/session/userKey"
+}

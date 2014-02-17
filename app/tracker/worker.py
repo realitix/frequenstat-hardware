@@ -11,13 +11,14 @@ class Worker:
     """
 
     def __init__(self, pathFileCurrent=None, pathFolderTmp=None, pathFolderWaiting=None, separator="||", 
-        pathFileUserId=None, pathFileUserKey=None, urlApi=None):
+        pathFileUserId=None, pathFileUserKey=None, pathFilePlaceId=None, urlApi=None):
         
         if pathFileCurrent == None or \
            pathFolderTmp == None or \
            pathFolderWaiting == None or \
            pathFileUserId == None or \
            pathFileUserKey == None or \
+           pathFilePlaceId == None or \
            urlApi == None :
             raise ValueError("Les dossiers ou fichiers sont mals renseignés")
 
@@ -32,6 +33,8 @@ class Worker:
             self.userId = file.read().strip()
         with open(pathFileUserKey, "r") as file:
             self.userKey = file.read().strip()
+        with open(pathFilePlaceId, "r") as file:
+            self.placeId = file.read().strip()
 
     def format(self):
         """
@@ -75,7 +78,14 @@ class Worker:
 
             with open(fileSrc, "r") as file:
                 opened = True
-                datas = {'datas': {'userId': self.userId, 'userKey': self.userKey, 'captures': json.load(file)}}
+                datas = {
+                    'datas': {
+                        'userId': self.userId, 
+                        'userKey': self.userKey,
+                        'placeId': self.placeId,
+                        'captures': json.load(file)
+                    }
+                }
 
                 try:
                     r = requests.post(self.urlApi, data=json.dumps(datas))

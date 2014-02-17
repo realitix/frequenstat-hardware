@@ -11,5 +11,6 @@
 	"FILE_CURRENT":"/home/realitix/git/tracker-hardware/dump/current/current.txt",
 	"SEPARATOR":"||",
 	"FILE_USER_ID":"/home/realitix/git/tracker-hardware/session/userId",
-	"FILE_USER_KEY":"/home/realitix/git/tracker-hardware/session/userKey"
+	"FILE_USER_KEY":"/home/realitix/git/tracker-hardware/session/userKey",
+	"FILE_PLACE_ID":"/home/realitix/git/tracker-hardware/session/placeId"
 }

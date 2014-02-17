@@ -3,7 +3,8 @@
 import os
 from datetime import datetime
 from scapy.all import *
-import scapy_ex
+from scapy_extension import scapy_ex
+from scapy_extension import ieee80211
 
 class Capture:
     """

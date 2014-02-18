@@ -22,12 +22,23 @@ class Capture:
         self.bpfFilter = bpfFilter
 
     def packetHandler(self, p):
-        stationMac = p.getlayer(Dot11).sta_bssid()
-        dateNow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        power = str(p.dBm_AntSignal)
+        """
+         Management frame
+         Association, reassociation, probe request
+        """
+        if p.type == 0 and p.subtype in [0, 2, 4]:
+            stationMac = p.addr2
+            dateNow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            power = str(p.dBm_AntSignal)
 
-        strFile = "%s%s%s%s%s\n" % (stationMac, self.separator, power, self.separator, dateNow)
-        self.file.write(strFile)
+            strFile = "%s%s%s%s%s\n" % (stationMac, self.separator, power, self.separator, dateNow)
+            self.file.write(strFile)
+
+        """
+         Controle frame
+         Association, reassociation, probe request
+        """
+        if p.type == 1 and p.subtype in []:
 
     def start(self):
         sniff(iface=self.iface, prn=self.packetHandler, timeout=self.timeout, filter=self.bpfFilter)

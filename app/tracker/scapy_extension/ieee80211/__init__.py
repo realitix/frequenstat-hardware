@@ -28,6 +28,6 @@ __docformat__ = "restructuredtext en"
 
 # support files
 from dot11_support  import *
-from dot11a_support import *
-from dot11n_support import *
+#from dot11a_support import *
+#from dot11n_support import *
 

@@ -36,3 +36,32 @@ Les logiciels suivants sont prérequis:
 	python-numpy
 
 Il suffit simplement de lancer le fichier main.py en administrateur pour laisser le programme s'éxécuter.
+
+
+-----------------------------
+Informations Générales sur le wifi ou comment capturer toutes les adresses mac des clients
+-----------------------------
+Il existe trois types de frame wifi: Control, Management et Data
+Voir : https://supportforums.cisco.com/docs/DOC-13664
+
+Chaque frame contient une ou plusieurs adresses mac.
+Il faut donc trouver celle appartenant à la station.
+Pour cela, il existe un flag FromDs et ToDs (voir http://www.commentcamarche.net/contents/1282-les-modes-de-fonctionnement-du-wifi-802-11-ou-wi-fi)
+Si toDs=1, alors c'est la station qui envoie la requête.
+
+Les control frame et management frame n'ont pas cette indication, toDs et fromDs seront égal à 0.
+C'est seulement pour les datas frame.
+
+Pour les datas frame, il suffit de sélectionner celle contenant toDs=1.
+Poues les autres, il faut les connaitres.
+
+De plus, pour les data frame, si ToDs=0 et fromDs=0, c'est une requête adhoc, les deux adresses mac sont deux stations différentes. 
+A capturer ?
+
+Les adresses macs contenues dans les controls fields dépendent des paquets précédemment envoyés. 
+Nous ne faisons pas d'analyse de paquets, nous ne pourrons donc pas utiliser les controls frames.
+
+Pour conclure,
+Nous allons capturer les management frame de type Probe, Asoociation, Reassociation
+Nous allons capturer les datas frame avec toDs=1 
+

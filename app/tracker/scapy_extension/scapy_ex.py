@@ -281,6 +281,9 @@ del scapy_layers_dot11_Dot11_extended_rates
 
 def scapy_layers_dot11_Dot11_sta_bssid(self):
 	"""Return the bssid for a station associated with the packet"""
+	""" On customise cette fonction pour qu'elle marche vraiment bien """
+	
+	# Management frame
 	if self.haslayer(Dot11ProbeReq) or self.hasflag('FCfield', 'to-DS'):
 		return self.addr2
 	else:

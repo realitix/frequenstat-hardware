@@ -2,7 +2,7 @@
 # -*-coding:utf-8 -*
 
 import os
-import json
+import yaml
 from datetime import datetime
 
 from tracker.utils import *
@@ -17,33 +17,18 @@ from tracker.worker import *
 	Enfin, il va régulièrement relancer l'écoute et envoyer les données sur l'api
 """
 
-fileConfPath = "./tracker.json"
-
-"""
-	La configuration contient les éléments suivants:
-	PATH: On assure que le PATH est complet
-	PATH_SCRIPT: Dossier contenant tous les scripts
-	URL_API: Url de l'api rest recevant les données
-	IFACE: Interface d'écoute des paquets
-	PATH_DUMP: Dossier de sauvegarde des dumps
-	PATH_SESSION: Dossier contenant la session
-	PATH_DUMP_CURRENT: Dossier de sauvegarde de l'écoute en cours
-	PATH_DUMP_TMP: Dossier de sauvegarde de fichiers temporaires
-	PATH_DUMP_WAITING: Dossier de sauvegarde de fichiers en attente d'être envoyé sur serveur
-	FILE_CURRENT: Fichier de lecture courant
-	SEPARATOR: Séparateur de champs
-	FILE_USER_ID: Fichier contenant l'id de l'utilisateur
-	FILE_USER_KEY: Fichier contenant la clé de l'utilisateur
-"""
+fileConfPath = "./config.yml"
 
 def main():
 	# On charge la conf
 	with open(fileConfPath, "r") as file:
-		conf = json.load(file)
+		conf = yaml.load(file)
+		conf = conf['main']
 	
 	# On intialise la carte wifi
 	execSystem("ifconfig %s down" % (conf['IFACE']))
 	execSystem("iwconfig %s essid any" % (conf['IFACE']))
+	execSystem("iwconfig %s key off" % (conf['IFACE']))
 	execSystem("iwconfig %s mode monitor" % (conf['IFACE']))
 	execSystem("ifconfig %s up" % (conf['IFACE']))
 
@@ -53,8 +38,8 @@ def main():
 			params = {
 				"iface": conf['IFACE'],
 				"file": file,
-				"timeout": 60,
-				"bpfFilter": "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
+				"timeout": conf['LISTEN_TIMEOUT'],
+				"bpfFilter": conf['SCAPY_FILTER']
 			}
 			capture = Capture(**params)
 			print "Démarrage de la capture"

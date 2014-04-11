@@ -1,6 +1,7 @@
 # -*-coding:utf-8 -*
 
 import os
+import hashlib
 from datetime import datetime
 from operator import itemgetter, attrgetter
 
@@ -9,6 +10,18 @@ def execSystem(cmd):
 
 	# On bloque le script jusqu'à la fin de la commande
 	pipe.read()
+	
+"""
+ Calcul le hash MD5 d'un fichier
+"""
+def calculateMd5(filePath):
+    m = hashlib.md5()
+    
+    with open(filePath, 'rb') as fh:
+        while data = fh.read(8192):
+            m.update(data)
+            
+    return m.hexdigest()
 
 """
  On fabrique une nouvelle liste supprimant les doublons ( - de trente seconde entre 2 requetes)

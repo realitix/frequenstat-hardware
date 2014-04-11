@@ -57,9 +57,12 @@ def main():
 			params = {
 				"pathFileCurrent": conf['FILE_CURRENT'],
 				"pathFolderTmp": conf['PATH_DUMP_TMP'],
-				"pathFolderWaiting": conf['PATH_DUMP_WAITING'],
+				"pathFolderWaitingCompress": conf['PATH_DUMP_WAITING_COMPRESS'],
+				"pathFolderWaitingSend": conf['PATH_DUMP_WAITING_SEND'],
 		        "pathFileUserId": conf['FILE_USER_ID'],
 		        "pathFileUserKey": conf['FILE_USER_KEY'],
+		        "pathFilePlaceId": conf['FILE_PLACE_ID'],
+		        "pathFileBoxId": conf['FILE_BOX_ID'],
 		        "urlApi": conf['URL_API']
 			}
 			worker = Worker(**params)

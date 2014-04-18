@@ -2,6 +2,8 @@
 
 import os
 import hashlib
+import bz2
+from shutil import copyfileobj
 from datetime import datetime
 from operator import itemgetter, attrgetter
 
@@ -22,6 +24,18 @@ def calculateMd5(filePath):
             m.update(data)
             
     return m.hexdigest()
+    
+
+"""
+ Calcul le hash MD5 d'un fichier
+"""
+def compressBz2(filePath):
+    newFilePath = '%s.bz2' % (filePath)
+    with open(filePath, 'rb') as input:
+        with bz2.BZ2File(newFilePath, 'wb', compresslevel=9) as output:
+            copyfileobj(input, output)
+    os.remove(filePath)
+    
 
 """
  On fabrique une nouvelle liste supprimant les doublons ( - de trente seconde entre 2 requetes)

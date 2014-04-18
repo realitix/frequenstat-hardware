@@ -80,7 +80,7 @@ class Worker:
     
     def compress(self):
     	"""
-    	 Cette fonction compresse le fichier en lzma (xz) pour l'envoi
+    	 Cette fonction compresse le fichier en bz2 pour l'envoi
     	 Pour chaque fichier en attente:
     	  - On le compresse avec la commande système
     	  - On le déplace dans le dossier d'attente d'envoi
@@ -88,11 +88,10 @@ class Worker:
     	# On parcourt les fichiers à compresser
         for fileName in os.listdir(self.pathFolderWaitingCompress):
         	# On compresse
-        	cmd = 'xz %s/%s' % (self.pathFolderWaitingCompress, fileName)
-    		execSystem(cmd)
+    		compressBz2('%s/%s' % (self.pathFolderWaitingCompress, fileName))
     		
     		# On déplace
-    		fileName = '%s.xz' % (fileName)
+    		fileName = '%s.bz2' % (fileName)
     		fileSrc  = '%s/%s' % (self.pathFolderWaitingCompress, fileName)
 			fileDest = '%s/%s' % (self.pathFolderWaitingSend, fileName)
             os.rename(fileSrc, fileDest)

@@ -3,15 +3,27 @@
 import os
 import hashlib
 import bz2
+from tempfile import SpooledTemporaryFile
+from subprocess import check_call
 from shutil import copyfileobj
 from datetime import datetime
 from operator import itemgetter, attrgetter
 
-def execSystem(cmd):
-	pipe = os.popen(cmd)
+def ex(cmd):
+	"""Shell out a subprocess and return what it writes to stdout as a string"""
+	in_mem_file = SpooledTemporaryFile(max_size=2048, mode="r+")
+	check_call(cmd, shell=True, stdout=in_mem_file)
+	in_mem_file.seek(0)
+	stdout = in_mem_file.read()
+	in_mem_file.close()
+	return stdout
 
-	# On bloque le script jusqu'à la fin de la commande
-	pipe.read()
+def initInterface(iface):
+    ex("ifconfig %s down" % (iface))
+	ex("iwconfig %s essid any" % (iface))
+	ex("iwconfig %s key off" % (iface))
+	ex("iwconfig %s mode monitor" % (iface))
+	ex("ifconfig %s up" % (iface))
 	
 """
  Calcul le hash MD5 d'un fichier
@@ -27,7 +39,7 @@ def calculateMd5(filePath):
     
 
 """
- Calcul le hash MD5 d'un fichier
+ Compresse un fichier en bz2
 """
 def compressBz2(filePath):
     newFilePath = '%s.bz2' % (filePath)

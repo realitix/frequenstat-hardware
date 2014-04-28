@@ -7,7 +7,7 @@ import requests
 
 from tracker.utils import *
 
-class Worker:
+class Worker(object):
     """
      Classe gérant le déplacement, le formating et l'envoie des données
     """

@@ -1,6 +1,7 @@
 # La configuration contient les éléments suivants:
 # PATH: On assure que le PATH est complet
 # PATH_SCRIPT: Dossier contenant tous les scripts
+# PATH_CONFIG_PERSO: Fichier de configuration personel
 # URL_API: Url de l'api rest recevant les données
 # IFACE: Interface d'écoute des paquets
 # PATH_DUMP: Dossier de sauvegarde des dumps
@@ -22,6 +23,7 @@
 main:
     PATH: /sbin:/usr/sbin:$PATH
 	PATH_SCRIPT: /home/realitix/git/tracker-hardware/lib
+	PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/config_perso.yml
 	URL_API: http://localhost/api/captures
 	IFACE: wlan0
 	PATH_DUMP: /home/realitix/git/tracker-hardware/dump

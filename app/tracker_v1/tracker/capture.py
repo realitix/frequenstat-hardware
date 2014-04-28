@@ -5,7 +5,7 @@ from datetime import datetime
 from scapy.all import *
 from scapy_extension import scapy_ex
 
-class Capture:
+class Capture(object):
     """
      Classe gérant la capture des paquets par scapy
     """
@@ -45,4 +45,9 @@ class Capture:
         	
 
     def start(self):
-        sniff(iface=self.iface, prn=self.packetHandler, timeout=self.timeout, filter=self.bpfFilter)
+        sniff(
+        	iface=self.iface, 
+        	prn=self.packetHandler,
+        	store=False,
+        	timeout=self.timeout, 
+        	filter=self.bpfFilter)

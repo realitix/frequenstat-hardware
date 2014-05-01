@@ -5,10 +5,10 @@
 	Point d'entrée permettant d'utiliser la bonne version du logiciel
 """
 
-versionPath = "../session/version"
+boxVersionPath = "../session/boxVersion"
 
 def main():
-	with open(versionPath, "r") as file:
+	with open(boxVersionPath, "r") as file:
 		version = file.read().strip()
 	
 	app = __import__('tracker_v%s' % version)

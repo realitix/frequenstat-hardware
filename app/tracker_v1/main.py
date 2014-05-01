@@ -7,6 +7,7 @@ from datetime import datetime
 from tracker.utils import *
 from tracker.capture import *
 from tracker.worker import *
+from tracker.channel import *
 
 """
 	Ce script gère tout le programme.
@@ -16,7 +17,7 @@ from tracker.worker import *
 	Enfin, il va régulièrement relancer l'écoute et envoyer les données sur l'api
 """
 
-fileConfPath = "./config.yml"
+fileConfPath = "%s/config.yml" % (os.path.dirname(os.path.realpath(__file__)))
 
 def main():
 	# On charge la conf
@@ -27,20 +28,12 @@ def main():
 	# On surcharge avec la conf personnelle
 	with open(conf['PATH_CONFIG_PERSO'], "r") as file:
 		conf2 = yaml.load(file)
-		conf2 = conf['main']
-		conf.update(conf2)
+		if conf2:
+			conf2 = conf2.get('main')
+			conf.update(conf2)
 	
 	# On intialise la carte wifi
 	initInterface(conf['IFACE'])
-	
-	# On créer le processus effectuant le channel hopping
-	pid = os.fork()
-	if pid == 0:
-		# Child
-		channel = Channel(conf['IFACE'])
-		print "Démarrage du channel hopping"
-		channel.start()
-		os._exit(0)
 
 	while(True):
 		# On lance la capture
@@ -69,11 +62,11 @@ def main():
 				"pathFolderTmp": conf['PATH_DUMP_TMP'],
 				"pathFolderWaitingCompress": conf['PATH_DUMP_WAITING_COMPRESS'],
 				"pathFolderWaitingSend": conf['PATH_DUMP_WAITING_SEND'],
-		        "pathFileUserId": conf['FILE_USER_ID'],
-		        "pathFileUserKey": conf['FILE_USER_KEY'],
-		        "pathFilePlaceId": conf['FILE_PLACE_ID'],
-		        "pathFileBoxId": conf['FILE_BOX_ID'],
-		        "urlApi": conf['URL_API']
+				"pathFileUserId": conf['FILE_USER_ID'],
+				"pathFileUserKey": conf['FILE_USER_KEY'],
+				"pathFilePlaceId": conf['FILE_PLACE_ID'],
+				"pathFileBoxId": conf['FILE_BOX_ID'],
+				"urlApi": conf['URL_API']
 			}
 			worker = Worker(**params)
 			print "Démarrage du worker"

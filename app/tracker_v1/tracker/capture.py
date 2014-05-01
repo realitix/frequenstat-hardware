@@ -3,7 +3,10 @@
 import os
 from datetime import datetime
 from scapy.all import *
-from scapy_extension import scapy_ex
+import scapy_ex
+import pcapy as pcap
+
+conf.use_pcap=True
 
 class Capture(object):
     """
@@ -45,6 +48,7 @@ class Capture(object):
         	
 
     def start(self):
+        self.bpfFilter = None
         sniff(
         	iface=self.iface, 
         	prn=self.packetHandler,

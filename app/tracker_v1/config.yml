@@ -22,23 +22,21 @@
 # Configuration pour le programme principal
 main:
     PATH: /sbin:/usr/sbin:$PATH
-	PATH_SCRIPT: /home/realitix/git/tracker-hardware/lib
-	PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/config_perso.yml
-	URL_API: http://localhost/api/captures
-	IFACE: wlan0
-	PATH_DUMP: /home/realitix/git/tracker-hardware/dump
-	PATH_SESSION: /home/realitix/git/tracker-hardware/session
-	PATH_DUMP_CURRENT: /home/realitix/git/tracker-hardware/dump/current
-	PATH_DUMP_TMP: /home/realitix/git/tracker-hardware/dump/tmp
-	PATH_DUMP_WAITING_COMPRESS: /home/realitix/git/tracker-hardware/dump/waiting-compress
-	PATH_DUMP_WAITING_SEND: /home/realitix/git/tracker-hardware/dump/waiting-send
-	FILE_CURRENT: /home/realitix/git/tracker-hardware/dump/current/current.txt
-	SEPARATOR: ||
-	FILE_USER_ID: /home/realitix/git/tracker-hardware/session/userId
-	FILE_USER_KEY: /home/realitix/git/tracker-hardware/session/userKey
-	FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId
-	FILE_BOX_ID: /home/realitix/git/tracker-hardware/session/boxId
-	SCAPY_FILTER: type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)
-	LISTEN_TIMEOUT: 60
-
-# Configuration pour le programme de mise à jour
+    PATH_SCRIPT: /home/realitix/git/tracker-hardware/lib
+    PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/app/config_perso.yml
+    URL_API: http://localhost/api/captures
+    IFACE: wlp0s20u1
+    PATH_DUMP: /home/realitix/git/tracker-hardware/dump
+    PATH_SESSION: /home/realitix/git/tracker-hardware/session
+    PATH_DUMP_CURRENT: /home/realitix/git/tracker-hardware/dump/current
+    PATH_DUMP_TMP: /home/realitix/git/tracker-hardware/dump/tmp
+    PATH_DUMP_WAITING_COMPRESS: /home/realitix/git/tracker-hardware/dump/waiting-compress
+    PATH_DUMP_WAITING_SEND: /home/realitix/git/tracker-hardware/dump/waiting-send
+    FILE_CURRENT: /home/realitix/git/tracker-hardware/dump/current/current.txt
+    SEPARATOR: "||"
+    FILE_USER_ID: /home/realitix/git/tracker-hardware/session/userId
+    FILE_USER_KEY: /home/realitix/git/tracker-hardware/session/userKey
+    FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId
+    FILE_BOX_ID: /home/realitix/git/tracker-hardware/session/boxId
+    SCAPY_FILTER: "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
+    LISTEN_TIMEOUT: 20

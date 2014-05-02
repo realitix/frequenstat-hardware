@@ -43,7 +43,9 @@ def main():
 	if not os.path.isdir(sessionPath):
 	    print "Le dossier de session n'existe pas"
 	    sys.exit(3)
-	    
+	
+	# Par defaut, la version de l'application est à 1
+	infos['appVersion'] = 1
 	keys = ['boxId', 'boxVersion', 'placeId', 'userId', 'userKey']
 	
 	for v in keys:

@@ -5,6 +5,7 @@
 # URL_API: Url de l'api rest recevant les données
 # IFACE: Interface d'écoute des paquets
 # PATH_DUMP: Dossier de sauvegarde des dumps
+# PATH_DB: Fichier Sqlite
 # PATH_SESSION: Dossier contenant la session
 # PATH_DUMP_CURRENT: Dossier de sauvegarde de l'écoute en cours
 # PATH_DUMP_TMP: Dossier de sauvegarde de fichiers temporaires
@@ -27,6 +28,7 @@ main:
     URL_API: http://localhost/api/captures
     IFACE: wlp0s20u1
     PATH_DUMP: /home/realitix/git/tracker-hardware/dump
+    PATH_DB: /home/realitix/git/tracker-hardware/tracker.db
     PATH_SESSION: /home/realitix/git/tracker-hardware/session
     PATH_DUMP_CURRENT: /home/realitix/git/tracker-hardware/dump/current
     PATH_DUMP_TMP: /home/realitix/git/tracker-hardware/dump/tmp

@@ -40,7 +40,7 @@ def main():
 		with open(conf['FILE_CURRENT'], "w") as file:
 			params = {
 				"iface": conf['IFACE'],
-				"file": file,
+				"db": conf['PATH_DB'],
 				"timeout": conf['LISTEN_TIMEOUT'],
 				"bpfFilter": conf['SCAPY_FILTER']
 			}
@@ -48,10 +48,6 @@ def main():
 			print "Démarrage de la capture"
 			capture.start()
 			print "Fin de la capture"
-
-		# On déplace le fichier
-		tmpName = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-		os.rename(conf['FILE_CURRENT'], "%s/%s" % (conf['PATH_DUMP_TMP'], tmpName))
 
 		# On lance le worker en forkant pour relancer instantément l'écoute
 		pid = os.fork()
@@ -66,7 +62,8 @@ def main():
 				"pathFileUserKey": conf['FILE_USER_KEY'],
 				"pathFilePlaceId": conf['FILE_PLACE_ID'],
 				"pathFileBoxId": conf['FILE_BOX_ID'],
-				"urlApi": conf['URL_API']
+				"urlApi": conf['URL_API'],
+				"bd": conf['PATH_DB']
 			}
 			worker = Worker(**params)
 			print "Démarrage du worker"

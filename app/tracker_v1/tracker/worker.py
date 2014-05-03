@@ -1,7 +1,9 @@
 # -*-coding:utf-8 -*
 
 import os
+import sys
 import json
+import sqlite3
 from datetime import datetime
 import requests
 
@@ -12,7 +14,7 @@ class Worker(object):
 	 Classe gérant le déplacement, le formating et l'envoie des données
 	"""
 
-	def __init__(self, pathFileCurrent=None, pathFolderTmp=None, pathFolderWaitingCompress=None, 
+	def __init__(self, db=None, pathFileCurrent=None, pathFolderTmp=None, pathFolderWaitingCompress=None, 
 		pathFolderWaitingSend=None, separator="||", pathFileUserId=None, 
 		pathFileUserKey=None, pathFilePlaceId=None, pathFileBoxId=None, urlApi=None):
 		
@@ -24,6 +26,7 @@ class Worker(object):
 		   pathFileUserKey == None or \
 		   pathFilePlaceId == None or \
 		   pathFileBoxId == None or \
+		   db == None or \
 		   urlApi == None :
 			raise ValueError("Les dossiers ou fichiers sont mals renseignés")
 
@@ -34,6 +37,12 @@ class Worker(object):
 		self.separator = separator
 		self.tmpName = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 		self.urlApi = urlApi
+
+		if not os.path.exists(db):
+            print "DB inexistante"
+            sys.exit(0)
+
+        self.db = sqlite3.connect(db)
 
 		with open(pathFileUserId, "r") as file:
 			self.userId = file.read().strip()

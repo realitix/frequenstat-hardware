@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
 from scapy.all import *
-from tracker.scapy_extension.ieee80211.dot11_support import *
-from tracker.scapy_extension.ieee80211.dot11a_support import *
-import tracker.scapy_extension.scapy_ex
 
 """
 import pcappy as pcap

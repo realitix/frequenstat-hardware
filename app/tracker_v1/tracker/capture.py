@@ -9,83 +9,86 @@ import scapy_ex
 import sqlite3
 import pcapy as pcap
 
+# Permet d'utiliser libpcap https://stackoverflow.com/questions/18994242/why-isnt-scapy-capturing-vlan-tag-information
+#TODO comparer les performance entre libpcacp et RawSocket!
+# Seul libpcap permet d'utiliser les filtres
 conf.use_pcap=True
+import scapy.arch.pcapdnet 
 
 class Capture(object):
     """
      Classe gérant la capture des paquets par scapy
     """
 
-    def __init__(self, iface=None, db=None, dbTimeout=120, timeout=3600, bpfFilter=None):
+    def __init__(self, iface=None, db=None, dbTimeout=120, bpfFilter=None):
         if iface == None or db == None:
             raise ValueError("L'interface ou le fichier sont mal renseignés")
 
         self.iface = str(iface) # Corrige une erreur de type unicode
-        self.timeout = timeout
         self.bpfFilter = bpfFilter
         self.pkts = []
         self.nbPackets = 0
-        self.nbMaxPackets = 200
+        self.nbMaxPackets = 10
         self.maxStoptime = 120
         self.dbTimeout = dbTimeout
         self.stoptime = time.time() + self.dbTimeout
+        self.db = db
+        self.createSchema()
 
-        if not os.path.exists(db):
-            self.db = sqlite3.connect(db)
-            self.createSchema()
-        else
-            self.db = sqlite3.connect(db)
 
-    def createSchema():
-        c = self.db.cursor()
-        c.execute('''CREATE TABLE captures (date TEXT, power INTEGER, mac text)''')
-        self.db.commit()
-        self.db.close()
+    def createSchema(self):
+        db = sqlite3.connect(self.db)
+        c = db.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
+        db.commit()
+        db.close()
 
-    def commit():
-        c = self.db.cursor()
+    def commit(self):
+        db = sqlite3.connect(self.db)
+        c = db.cursor()
+        inserts = []
         for p in self.pkts:
-            c.execute("INSERT INTO captures VALUES ('%s', %d, '%s')" % (p['date'], p['power'], p['mac']))
-
-        self.db.commit()
-        self.db.close()
+            inserts.append((p['date'], p['power'], p['mac']))
+        c.executemany('INSERT INTO captures VALUES (?,?,?)', inserts)
+        db.commit()
+        db.close()
 
     def packetHandler(self, p):
-    	stationMac = None
-    	
+        stationMac = None
+        
         """
          - Management frame
            -> Association, reassociation, probe request
          - Data frame
            -> Ce qui contient toDs=1 et fromDs=0
            -> Ce qui contient toDs=0 et fromDs=0
-        """
-        if (
-        	( p.type == 0 and p.subtype in [0, 2, 4] ) or
-        	( p.type == 2 and p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') ) or
-        	( p.type == 2 and not p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') )
-        ):
-        	stationMac = p.addr2
         
+        if (
+            ( p.type == 0 and p.subtype in [0, 2, 4] ) or
+            ( p.type == 2 and p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') ) or
+            ( p.type == 2 and not p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') )
+        ):
+            stationMac = p.addr2
+        """
+        stationMac = p.addr2
+
         if stationMac is not None:
-	        dateNow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-	        power = int(str(p.dBm_AntSignal))
+            dateNow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            power = int(str(p.dBm_AntSignal))
             self.pkts.append({'date': dateNow, 'mac': stationMac, 'power': power })
 
             self.nbPackets = self.nbPackets + 1
-            remain = self.stoptime - time.time()
+            remain = self.stoptime - time.time() 
 
             if self.nbPackets > self.nbMaxPackets or remain <= 0:
                 self.commit()
                 self.stoptime = time.time() + self.dbTimeout
                 self.nbPackets = 0
-        	
+            
 
     def start(self):
-        self.bpfFilter = None
         sniff(
-        	iface=self.iface, 
-        	prn=self.packetHandler,
-        	store=False,
-        	timeout=self.timeout, 
-        	filter=self.bpfFilter)
+            iface=self.iface, 
+            prn=self.packetHandler,
+            store=False, 
+            filter=self.bpfFilter)

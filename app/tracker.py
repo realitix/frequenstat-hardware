@@ -13,17 +13,20 @@ boxVersionPath = "../session/boxVersion"
 def main():
 	argc = len(sys.argv)
 	if argc == 1:
-		print "1=Main app, 2=Channel hopping"
+		print "1=Capture app, 2=Worker app, 3=Channel app"
 		sys.exit(0)
 
 	with open(boxVersionPath, "r") as file:
 		version = file.read().strip()
 	
 	if int(sys.argv[1]) == 1:	
-		app = importlib.import_module('tracker_v%s.main' % version)
+		app = importlib.import_module('tracker_v%s.tracker_capture' % version)
 		app.main()
 	elif int(sys.argv[1]) == 2:
-		app = importlib.import_module('tracker_v%s.channel_hopping' % version)
+		app = importlib.import_module('tracker_v%s.tracker_worker' % version)
+		app.main()
+	elif int(sys.argv[1]) == 3:
+		app = importlib.import_module('tracker_v%s.tracker_channel' % version)
 		app.main()
 	else:
 		print "Argument invalide"

@@ -21,7 +21,7 @@ main:
     PATH: /sbin:/usr/sbin:$PATH
     PATH_SCRIPT: /home/realitix/git/tracker-hardware/lib
     PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/app/config_perso.yml
-    URL_API: http://localhost/api/captures
+    URL_API: http://localhost/api/v1/captures
     IFACE: wlp0s20u1
     PATH_DUMP: /home/realitix/git/tracker-hardware/dump
     PATH_DB: /home/realitix/git/tracker-hardware/tracker.db

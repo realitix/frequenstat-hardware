@@ -4,7 +4,7 @@ import os
 import yaml
 from datetime import datetime
 import time
-import randint
+import random
 
 from tracker.utils import *
 from tracker.capture import *
@@ -46,4 +46,4 @@ def main():
 		worker.start()
 
 		# On attend le prochain envoie
-		time.sleep(randint(120, 1000))
+		time.sleep(random.randint(120, 1000))

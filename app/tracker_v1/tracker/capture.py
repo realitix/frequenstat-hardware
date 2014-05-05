@@ -53,6 +53,9 @@ class Capture(object):
         db.commit()
         db.close()
 
+        # Empty the list
+        self.pkts = []
+
     def packetHandler(self, p):
         stationMac = None
         

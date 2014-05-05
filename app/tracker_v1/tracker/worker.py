@@ -36,34 +36,53 @@ class Worker(object):
             print "DB inexistante"
             sys.exit(0)
 
-        self.db = sqlite3.connect(db)
+        self.db = db
 
         with open(pathFileUserId, "r") as file:
-            self.userId = file.read().strip()
+            self.userId = int(file.read().strip())
         with open(pathFileUserKey, "r") as file:
-            self.userKey = file.read().strip()
+            self.userKey = str(file.read().strip())
         with open(pathFilePlaceId, "r") as file:
-            self.placeId = file.read().strip()
+            self.placeId = int(file.read().strip())
         with open(pathFileBoxId, "r") as file:
-            self.boxId = file.read().strip()
+            self.boxId = int(file.read().strip())
 
     def format(self):
         """
          Cette fonction génère le fichier contenant les données
+         La requete sql évite les doublons et sélectionne la plus grande puissance
         """
-        c = self.db.cursor()
+        sql = '''
+            SELECT c.date, c.power, c.mac
+            FROM
+            captures c,
+            (
+                SELECT rowid, mac, date
+                        FROM captures
+                        GROUP BY mac, date
+                    HAVING MAX(power)
+            ) t
+            WHERE t.rowid = c.rowid
+            ORDER BY c.date ASC
+            '''
+
+        db = sqlite3.connect(self.db)
+        c = db.cursor()
         requests = []
-        for r in c.execute('SELECT date, power, mac FROM captures ORDER BY date'):
+        for r in c.execute(sql):
             requests.append({"date": r[0], "power": r[1], "mac": r[2]})
-        self.db.close()
+        db.close()
 
         # On filtre les éléments en trop
-        requests = cleanCapturesList(requests)
+        #requests = cleanCapturesList(requests)
 
-        fileName = '%d-%d-%d_%s' % (self.userId, self.placeId, self.boxId, fileName)
+        fileName = '%d-%d-%d_%s' % (self.userId, self.placeId, self.boxId, datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
         fileDest = "%s/%s" % (self.pathFolderWaitingCompress, fileName)
         with open(fileDest, "w") as f:
-            json.dump(requests, f)
+            #CSV
+            for r in requests:
+                f.write('%s;%s;%s\n' % (r['date'], r['power'], r['mac']))
+            #json.dump(requests, f)
     
     def compress(self):
         """
@@ -93,6 +112,7 @@ class Worker(object):
             - Si c'est 1, on supprime le fichier (car c'est bon)
             - Sinon on le renvoie au serveur
         """
+        print "Envoie des fichiers"
         # On parcourt les fichiers a envoyer
         for fileName in os.listdir(self.pathFolderWaitingSend):
             fileSrc = "%s/%s" % (self.pathFolderWaitingSend, fileName)
@@ -100,26 +120,28 @@ class Worker(object):
             md5 = calculateMd5(fileSrc);
             count = 3
             returnContent = 0
+
+            print "Envoie de %s" % fileSrc
             
-            while count > 0 or returnContent != 1:
+            while count > 0:
                 count = count - 1
-                
+                print "Essaie a %s" % self.urlApi
                 with open(fileSrc, "rb") as file:
                     files = {'file': file}
                     datas = {
-                        'datas': {
-                            'userId': self.userId, 
-                            'userKey': self.userKey,
-                            'placeId': self.placeId,
-                            'boxId': boxId
-                        }
+                        'userId': self.userId, 
+                        'userKey': self.userKey,
+                        'placeId': self.placeId,
+                        'boxId': self.boxId,
+                        'md5': md5
                     }
     
                     try:
-                        r = requests.post(self.urlApi, data=json.dumps(datas), files=files)
+                        r = requests.post(self.urlApi, data=datas, files=files)
                         status = r.status_code
                         if status == 200 :
                             returnContent = int(r.content)
+                            count = 0
                     except requests.exceptions.ConnectionError:
                         status = 0
 

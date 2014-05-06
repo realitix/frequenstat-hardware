@@ -80,9 +80,9 @@ class Worker(object):
         fileDest = "%s/%s" % (self.pathFolderWaitingCompress, fileName)
         with open(fileDest, "w") as f:
             #CSV
-            for r in requests:
-                f.write('%s;%s;%s\n' % (r['date'], r['power'], r['mac']))
-            #json.dump(requests, f)
+            #for r in requests:
+            #    f.write('%s;%s;%s\n' % (r['date'], r['power'], r['mac']))
+            json.dump(requests, f)
     
     def compress(self):
         """

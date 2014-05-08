@@ -31,6 +31,7 @@ class Worker(object):
         self.pathFolderWaitingCompress = pathFolderWaitingCompress
         self.pathFolderWaitingSend = pathFolderWaitingSend
         self.urlApi = urlApi
+        self.lastDate = None
 
         if not os.path.exists(db):
             print "DB inexistante"
@@ -73,6 +74,8 @@ class Worker(object):
             requests.append({"date": r[0], "power": r[1], "mac": r[2]})
         db.close()
 
+        self.lastDate = requests[-1]['date']
+
         # On filtre les éléments en trop
         #requests = cleanCapturesList(requests)
 
@@ -83,6 +86,18 @@ class Worker(object):
             #for r in requests:
             #    f.write('%s;%s;%s\n' % (r['date'], r['power'], r['mac']))
             json.dump(requests, f)
+
+    def cleanDb(self):
+        """
+         Cette fonction supprime toutes les captures inférieur à la date enregistré
+         On efface pas toutes les captures dans le cas ou il y a eu une insertion depuis le format
+        """
+        sql = "DELETE FROM captures WHERE strftime('%s', date) <= strftime('%s', '"+self.lastDate+"');"
+        db = sqlite3.connect(self.db)
+        c = db.cursor()
+        c.execute(sql)
+        db.commit()
+        db.close()
     
     def compress(self):
         """
@@ -148,6 +163,7 @@ class Worker(object):
             # On supprime le fichier lu
             if status == 200 and returnContent == 1:
                 os.remove(fileSrc)
+                self.cleanDb()
 
             """ 
              * 000 = la connexion internet ne fonctionne pas
@@ -156,7 +172,9 @@ class Worker(object):
              * 400 = Cle manquante dans le JSON
              * 500 = Erreur du serveur
             """
-            if status == 0:
+            if status == 200 and returnContent == 1:
+                print "Le fichier a bien été transféré"
+            elif status == 0:
                 print "Connection impossible"
             elif status == 404:
                 print "JSON mal formate"
@@ -166,6 +184,8 @@ class Worker(object):
                 print "Cles manquantes"
             elif status == 500:
                 print "Erreur du serveur"
+            else:
+                print "Status inconnu: %d" % status
 
     def start(self):
         self.format()

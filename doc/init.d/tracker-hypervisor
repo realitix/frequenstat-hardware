@@ -5,14 +5,14 @@
 # Required-Stop:     
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Script permettant de lancer la capture
-# Description:       Script permettant de lancer la capture
+# Short-Description: Script permettant de lancer l'hyperviseur
+# Description:       Script permettant de lancer l'hyperviseur
 ### END INIT INFO
 
 # Author: Jean-Sébastien Bevilacqua <realitix@gmail.com>
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Sniff wifi traffic"
-NAME=tracker-capture
+DESC="Hypervisor of tracker"
+NAME=tracker-hypervisor
 DAEMON=/usr/bin/$NAME
 DAEMON_ARGS="1"
 PIDFILE=/var/run/$NAME.pid

@@ -32,12 +32,12 @@ class Worker(object):
         self.pathFolderWaitingSend = pathFolderWaitingSend
         self.urlApi = urlApi
         self.lastDate = None
-
-        if not os.path.exists(db):
-            print "DB inexistante"
-            sys.exit(0)
-
         self.db = db
+        self.dbReady = True
+        
+        if not os.path.exists(db):
+            self.dbReady = False
+            print "DB inexistante"
 
         with open(pathFileUserId, "r") as file:
             self.userId = int(file.read().strip())
@@ -188,6 +188,7 @@ class Worker(object):
                 print "Status inconnu: %d" % status
 
     def start(self):
-        self.format()
-        self.compress()
-        self.send()
+        if self.dbready:
+            self.format()
+            self.compress()
+            self.send()

@@ -35,7 +35,6 @@ class Capture(object):
         self.db = db
         self.createSchema()
 
-
     def createSchema(self):
         db = sqlite3.connect(self.db)
         c = db.cursor()

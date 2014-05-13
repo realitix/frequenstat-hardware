@@ -11,13 +11,20 @@ import subprocess
 import time
 import os
 
+logPath = "../logs/"
+
 def main():
+	if not os.path.isdir(logPath):
+		print "Repertoire des logs inexistant"
+		return
+		
 	d = os.getcwd()+'/'
-	
 	types = ['3','1','2']
 	procs = dict()
+	logs = dict()
 	for t in types:
-		procs[t] = subprocess.Popen([d+'tracker.py', t])
+		logs[t] = open(logPath+t, 'w+')
+		procs[t] = subprocess.Popen([d+'tracker.py', t], stdout=logs[t], stderr=subprocess.STDOUT)
 	
 	while 1:
 		for t, proc in procs.iteritems():

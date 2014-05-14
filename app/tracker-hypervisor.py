@@ -30,7 +30,7 @@ def main():
 	while 1:
 		for t, proc in procs.iteritems():
 			if proc.poll() is not None:
-				logs[t].write('\n\n%s - Redemarrage du processus!\n\n' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+				logs[t].write('\n\nRedemarrage du processus! [%s]\n\n' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 				procs[t] = subprocess.Popen([d+'tracker.py', t], stdout=logs[t], stderr=subprocess.STDOUT)
 		time.sleep(10)
 				

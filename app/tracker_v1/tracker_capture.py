@@ -6,8 +6,6 @@ from datetime import datetime
 
 from tracker.utils import *
 from tracker.capture import *
-from tracker.worker import *
-from tracker.channel import *
 
 """
 	Ce script gère la capture.

@@ -34,6 +34,7 @@ class Worker(object):
         self.lastDate = None
         self.db = db
         self.dbReady = True
+        self.hasDatas = None
         
         if not os.path.exists(db):
             self.dbReady = False
@@ -70,22 +71,18 @@ class Worker(object):
         db = sqlite3.connect(self.db)
         c = db.cursor()
         requests = []
+        self.hasDatas = False
         for r in c.execute(sql):
+            self.hasDatas = True
             requests.append({"date": r[0], "power": r[1], "mac": r[2]})
         db.close()
 
-        self.lastDate = requests[-1]['date']
-
-        # On filtre les éléments en trop
-        #requests = cleanCapturesList(requests)
-
-        fileName = '%d-%d-%d_%s' % (self.userId, self.placeId, self.boxId, datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
-        fileDest = "%s/%s" % (self.pathFolderWaitingCompress, fileName)
-        with open(fileDest, "w") as f:
-            #CSV
-            #for r in requests:
-            #    f.write('%s;%s;%s\n' % (r['date'], r['power'], r['mac']))
-            json.dump(requests, f)
+        if self.hasDatas:
+            self.lastDate = requests[-1]['date']
+            fileName = '%d-%d-%d_%s' % (self.userId, self.placeId, self.boxId, datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
+            fileDest = "%s/%s" % (self.pathFolderWaitingCompress, fileName)
+            with open(fileDest, "w") as f:
+                json.dump(requests, f)
 
     def cleanDb(self):
         """
@@ -116,6 +113,10 @@ class Worker(object):
             fileSrc  = '%s/%s' % (self.pathFolderWaitingCompress, fileName)
             fileDest = '%s/%s' % (self.pathFolderWaitingSend, fileName)
             os.rename(fileSrc, fileDest)
+            
+        # Le fichier est bien créé, on vide la bdd
+        if self.hasDatas:
+            self.cleanDb()
             
     def send(self):
         """
@@ -163,7 +164,6 @@ class Worker(object):
             # On supprime le fichier lu
             if status == 200 and returnContent == 1:
                 os.remove(fileSrc)
-                self.cleanDb()
 
             """ 
              * 000 = la connexion internet ne fonctionne pas

@@ -4,5 +4,8 @@ __pycache__/
 
 session/*
 logs/*
+dump/waiting-compress/*
+dump/waiting-send/*
+tracker.db
 
 !.gitignore

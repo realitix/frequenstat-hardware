@@ -1,15 +1,11 @@
 # La configuration contient les éléments suivants:
-# PATH: On assure que le PATH est complet
-# PATH_SCRIPT: Dossier contenant tous les scripts
 # PATH_CONFIG_PERSO: Fichier de configuration personel
 # URL_API: Url de l'api rest recevant les données
 # IFACE: Interface d'écoute des paquets
-# PATH_DUMP: Dossier de sauvegarde des dumps
 # PATH_DB: Fichier Sqlite
 # PATH_SESSION: Dossier contenant la session
 # PATH_DUMP_WAITING_COMPRESS: Dossier de sauvegarde de fichiers en attente d'être compressé
 # PATH_DUMP_WAITING_SEND: Dossier de sauvegarde de fichiers en attente d'être envoyé sur serveur
-# FILE_CURRENT: Fichier de lecture courant
 # FILE_USER_ID: Fichier contenant l'id de l'utilisateur
 # FILE_USER_KEY: Fichier contenant la clé de l'utilisateur
 # FILE_PLACE_ID: Fichier contenant l'id de a place
@@ -18,17 +14,13 @@
 
 # Configuration pour le programme principal
 main:
-    PATH: /sbin:/usr/sbin:$PATH
-    PATH_SCRIPT: /home/realitix/git/tracker-hardware/lib
     PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/app/config_perso.yml
     URL_API: http://localhost/api/v1/captures
-    IFACE: wlp0s20u1
-    PATH_DUMP: /home/realitix/git/tracker-hardware/dump
+    IFACE: alpha1
     PATH_DB: /home/realitix/git/tracker-hardware/tracker.db
     PATH_SESSION: /home/realitix/git/tracker-hardware/session
     PATH_DUMP_WAITING_COMPRESS: /home/realitix/git/tracker-hardware/dump/waiting-compress
     PATH_DUMP_WAITING_SEND: /home/realitix/git/tracker-hardware/dump/waiting-send
-    FILE_CURRENT: /home/realitix/git/tracker-hardware/dump/current/current.txt
     FILE_USER_ID: /home/realitix/git/tracker-hardware/session/userId
     FILE_USER_KEY: /home/realitix/git/tracker-hardware/session/userKey
     FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId

@@ -33,7 +33,7 @@ def main():
 	    sys.exit(1)
 	
 	url = "%s%s" % (url, sn)
-	r = requests.get(url)
+	r = requests.get(url, verify=False)
 	
 	if r.status_code != 200:
 	    print "Le serveur n'a pas repondu 200"

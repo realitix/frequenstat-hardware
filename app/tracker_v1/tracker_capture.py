@@ -38,7 +38,9 @@ def main():
 	params = {
 		"iface": conf['IFACE'],
 		"db": conf['PATH_DB'],
-		"bpfFilter": conf['SCAPY_FILTER']
+		"bpfFilter": conf['SCAPY_FILTER'],
+		"dbTimeout": conf['CAPTURE_BUFFER_TIME'],
+		"nbMaxPackets": conf['CAPTURE_BUFFER_PACKETS']
 	}
 	capture = Capture(**params)
 	print "Démarrage de la capture"

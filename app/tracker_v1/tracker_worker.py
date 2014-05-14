@@ -45,4 +45,4 @@ def main():
 		worker.start()
 
 		# On attend le prochain envoie
-		time.sleep(random.randint(120, 1000))
+		time.sleep(random.randint(conf['WORKER_MIN_TIME'], conf['WORKER_MAX_TIME']))

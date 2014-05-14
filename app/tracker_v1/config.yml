@@ -11,6 +11,10 @@
 # FILE_PLACE_ID: Fichier contenant l'id de a place
 # FILE_BOX_ID: Fichier contenant l'id de la boxe
 # SCAPY_FILTER: Filtre utilisé pour ne pas récupérer tous les paquets et optimisé l'écoute
+# WORKER_MIN_TIME: Temps minimum (secondes) entre deux envois
+# WORKER_MAX_TIME: Temps maximum (secondes) entre deux envois
+# CAPTURE_BUFFER_PACKETS: Nombre de packet à partir duquel le buffer flush dans la db
+# CAPTURE_BUFFER_TIME: Temps en secondes avant envoie dans la BDD
 
 # Configuration pour le programme principal
 main:
@@ -26,3 +30,7 @@ main:
     FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId
     FILE_BOX_ID: /home/realitix/git/tracker-hardware/session/boxId
     SCAPY_FILTER: "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
+    WORKER_MIN_TIME: 100
+    WORKER_MAX_TIME: 1000
+    CAPTURE_BUFFER_PACKETS: 10
+    CAPTURE_BUFFER_TIME: 20

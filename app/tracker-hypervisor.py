@@ -15,7 +15,7 @@ from datetime import datetime
 def main():
 	# CONFIGURATION
 	logPath = "/home/realitix/git/tracker-hardware/logs/"
-	appPath = "/home/realitix/git/tracker-hardware/tracker.py"
+	appPath = "/home/realitix/git/tracker-hardware/app/tracker.py"
 
 	if not os.path.isdir(logPath):
 		print "Repertoire des logs inexistant"

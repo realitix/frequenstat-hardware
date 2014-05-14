@@ -39,7 +39,7 @@ def main():
 	    print "Le serveur n'a pas repondu 200"
 	    sys.exit(2)
 	
-	infos = r.json()
+	infos = r.json
 	
 	if not os.path.isdir(sessionPath):
 	    print "Le dossier de session n'existe pas"

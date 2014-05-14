@@ -7,5 +7,6 @@ logs/*
 dump/waiting-compress/*
 dump/waiting-send/*
 tracker.db
+app/config_perso.yml
 
 !.gitignore

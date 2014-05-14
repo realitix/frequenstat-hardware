@@ -20,11 +20,12 @@ def main():
 		conf = conf['main']
 	
 	# On surcharge avec la conf personnelle
-	with open(conf['PATH_CONFIG_PERSO'], "r") as file:
-		conf2 = yaml.load(file)
-		if conf2:
-			conf2 = conf2.get('main')
-			conf.update(conf2)
+	if os.path.exists(conf['PATH_CONFIG_PERSO']):
+		with open(conf['PATH_CONFIG_PERSO'], "r") as file:
+			conf2 = yaml.load(file)
+			if conf2:
+				conf2 = conf2.get('main')
+				conf.update(conf2)
 	
 	# On intialise la carte wifi
 	initInterface(conf['IFACE'])

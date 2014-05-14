@@ -19,7 +19,7 @@ def getSerial():
         for line in f:
             if 'Serial' in line:
                 cpuserial = line[10:26]
-                f.close()
+        f.close()
     except:
         cpuserial = None
     

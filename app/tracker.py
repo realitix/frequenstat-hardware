@@ -20,7 +20,7 @@ class Unbuffered(object):
         return getattr(self.stream, attr)
 sys.stdout = Unbuffered(sys.stdout)
 
-boxVersionPath = "../session/boxVersion"
+boxVersionPath = "/home/realitix/git/tracker-hardware/session/boxVersion"
 
 def main():
 	argc = len(sys.argv)

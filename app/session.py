@@ -10,7 +10,7 @@ import sys
 import os
 
 url = 'http://dev2.bevi.fr/api/getSession/'
-sessionPath = "../session"
+sessionPath = "/home/realitix/git/tracker-hardware/session"
 
 def getSerial():
     cpuserial = None

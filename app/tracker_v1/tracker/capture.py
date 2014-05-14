@@ -20,7 +20,7 @@ class Capture(object):
      Classe gérant la capture des paquets par scapy
     """
 
-    def __init__(self, iface=None, db=None, dbTimeout=120, nbMaxPackets=100 bpfFilter=None):
+    def __init__(self, iface=None, db=None, dbTimeout=120, nbMaxPackets=100, bpfFilter=None):
         if iface == None or db == None:
             raise ValueError("L'interface ou le fichier sont mal renseignés")
 

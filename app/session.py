@@ -52,7 +52,7 @@ def main():
 	for v in keys:
 	    with open("%s/%s" % (sessionPath, v), "w") as f:
 		    f.write(str(infos[v]))
-		    print "%s a bien ete mis a jour"
+		    print "%s a bien ete mis a jour" % v
 	
 
 

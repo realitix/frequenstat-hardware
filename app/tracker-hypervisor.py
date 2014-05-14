@@ -10,7 +10,7 @@
 import subprocess
 import time
 import os
-import datetime
+from datetime import datetime
 
 logPath = "../logs/"
 
@@ -24,7 +24,7 @@ def main():
 	procs = dict()
 	logs = dict()
 	for t in types:
-		logs[t] = open(logPath+t, 'w+')
+		logs[t] = open(logPath+t, 'a', 0)
 		procs[t] = subprocess.Popen([d+'tracker.py', t], stdout=logs[t], stderr=subprocess.STDOUT)
 	
 	while 1:

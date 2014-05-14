@@ -188,7 +188,7 @@ class Worker(object):
                 print "Status inconnu: %d" % status
 
     def start(self):
-        if self.dbready:
+        if self.dbReady:
             self.format()
             self.compress()
             self.send()

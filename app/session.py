@@ -24,7 +24,7 @@ def getSerial():
 
 def main():
 	# CONFIGURATION
-	url = 'http://dev2.bevi.fr/api/v1/getSession/'
+	url = 'http://dev2.bevi.fr/api/v1/session/'
 	sessionPath = "/home/realitix/git/tracker-hardware/session"
 
 	sn = getSerial();

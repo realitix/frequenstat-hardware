@@ -15,9 +15,10 @@ from tracker.capture import *
 	Enfin, il va régulièrement relancer l'écoute et envoyer les données sur l'api
 """
 
-fileConfPath = "%s/config.yml" % (os.path.dirname(os.path.realpath(__file__)))
-
 def main():
+	# CONFIGURATION
+	fileConfPath = "%s/config.yml" % (os.path.dirname(os.path.realpath(__file__)))
+
 	# On charge la conf
 	with open(fileConfPath, "r") as file:
 		conf = yaml.load(file)

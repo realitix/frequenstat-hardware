@@ -11,9 +11,10 @@ from tracker.channel import *
 	Ce script gère le channel hopping
 """
 
-fileConfPath = "%s/config.yml" % (os.path.dirname(os.path.realpath(__file__)))
-
 def main():
+	# CONFIGURATION
+	fileConfPath = "%s/config.yml" % (os.path.dirname(os.path.realpath(__file__)))
+
 	# On charge la conf
 	with open(fileConfPath, "r") as file:
 		conf = yaml.load(file)

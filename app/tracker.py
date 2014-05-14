@@ -20,9 +20,10 @@ class Unbuffered(object):
         return getattr(self.stream, attr)
 sys.stdout = Unbuffered(sys.stdout)
 
-boxVersionPath = "/home/realitix/git/tracker-hardware/session/boxVersion"
-
 def main():
+	# CONFIGURATION
+	boxVersionPath = "/home/realitix/git/tracker-hardware/session/boxVersion"
+
 	argc = len(sys.argv)
 	if argc == 1:
 		print "1=Capture app, 2=Worker app, 3=Channel app"

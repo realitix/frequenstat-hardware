@@ -9,9 +9,6 @@ import requests
 import sys
 import os
 
-url = 'http://dev2.bevi.fr/api/getSession/'
-sessionPath = "/home/realitix/git/tracker-hardware/session"
-
 def getSerial():
     cpuserial = None
     try:
@@ -26,6 +23,10 @@ def getSerial():
     return cpuserial
 
 def main():
+	# CONFIGURATION
+	url = 'http://dev2.bevi.fr/api/getSession/'
+	sessionPath = "/home/realitix/git/tracker-hardware/session"
+
 	sn = getSerial();
 	if not sn:
 	    print "Impossible de lire le numero de serie"

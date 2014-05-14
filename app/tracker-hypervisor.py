@@ -12,10 +12,11 @@ import time
 import os
 from datetime import datetime
 
-logPath = "/home/realitix/git/tracker-hardware/logs/"
-appPath = "/home/realitix/git/tracker-hardware/tracker.py"
-
 def main():
+	# CONFIGURATION
+	logPath = "/home/realitix/git/tracker-hardware/logs/"
+	appPath = "/home/realitix/git/tracker-hardware/tracker.py"
+
 	if not os.path.isdir(logPath):
 		print "Repertoire des logs inexistant"
 		return

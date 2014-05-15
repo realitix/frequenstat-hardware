@@ -105,7 +105,7 @@ class Worker(object):
         """
         # On parcourt les fichiers à compresser
         for fileName in os.listdir(self.pathFolderWaitingCompress):
-            if fileName.startswith('.'):
+            if fileName == '.gitignore':
                 continue
             # On compresse
             compressBz2('%s/%s' % (self.pathFolderWaitingCompress, fileName))
@@ -133,7 +133,7 @@ class Worker(object):
         print "Envoie des fichiers"
         # On parcourt les fichiers a envoyer
         for fileName in os.listdir(self.pathFolderWaitingSend):
-            if fileName.startswith('.'):
+            if fileName == '.gitignore':
                 continue
             fileSrc = "%s/%s" % (self.pathFolderWaitingSend, fileName)
             status = 0

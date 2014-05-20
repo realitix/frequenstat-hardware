@@ -19,7 +19,7 @@
 # Configuration pour le programme principal
 main:
     PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/app/config_perso.yml
-    URL_API: http://dev2.bevi.fr/api/v1/captures
+    URL_API: http://client.frequenstat.com/api/v1/captures
     IFACE: alpha1
     PATH_DB: /home/realitix/git/tracker-hardware/tracker.db
     PATH_SESSION: /home/realitix/git/tracker-hardware/session

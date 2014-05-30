@@ -7,6 +7,7 @@
 
 import importlib
 import sys
+import signal
 from datetime import datetime
 
 # On supprime le buffer stdout
@@ -20,7 +21,12 @@ class Unbuffered(object):
         return getattr(self.stream, attr)
 sys.stdout = Unbuffered(sys.stdout)
 
+def handler(signum, frame):
+    sys.exit("Fin du script")
+
 def main():
+	signal.signal(signal.SIGTERM, handler)
+
 	# CONFIGURATION
 	boxVersionPath = "/home/realitix/git/tracker-hardware/session/boxVersion"
 

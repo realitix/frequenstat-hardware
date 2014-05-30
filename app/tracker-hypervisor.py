@@ -14,12 +14,17 @@ import time
 import os
 from datetime import datetime
 
+procs = dict()
+
 def handler(signum, frame):
-    if signum == signal.SIGTERM:
-    	sys.exit("Fin de l'hypervision")
+	for proc in procs.iteritems():
+		proc.send_signal(signal.SIGTERM)
+    sys.exit("Fin de l'hypervision")
 
 
 def main():
+	signal.signal(signal.SIGTERM, handler)
+
 	# CONFIGURATION
 	logPath = "/home/realitix/git/tracker-hardware/logs/"
 	appPath = "/home/realitix/git/tracker-hardware/app/tracker.py"
@@ -29,7 +34,6 @@ def main():
 		return
 		
 	types = ['3','1','2']
-	procs = dict()
 	logs = dict()
 	for t in types:
 		logs[t] = open(logPath+t, 'a', 0)

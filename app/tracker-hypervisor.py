@@ -19,7 +19,7 @@ procs = dict()
 def handler(signum, frame):
 	for proc in procs.iteritems():
 		proc.send_signal(signal.SIGTERM)
-    sys.exit("Fin de l'hypervision")
+	sys.exit("Fin de l'hypervision")
 
 
 def main():
@@ -48,4 +48,4 @@ def main():
 				
 
 if __name__ == '__main__':
-    main()
+	main()

@@ -8,9 +8,16 @@
 """
 
 import subprocess
+import signal
+import sys
 import time
 import os
 from datetime import datetime
+
+def handler(signum, frame):
+    if signum == signal.SIGTERM:
+    	sys.exit("Fin de l'hypervision")
+
 
 def main():
 	# CONFIGURATION

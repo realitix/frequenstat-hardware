@@ -32,6 +32,10 @@ def main():
 	initInterface(conf['IFACE'])
 	
 	# On créer le processus effectuant le channel hopping
-	channel = Channel(conf['IFACE'])
+	params = {
+		"iface": conf['IFACE'],
+		"channel": conf['CHANNEL']
+	}
+	channel = Channel(**params)
 	print "Démarrage du channel hopping"
 	channel.start()

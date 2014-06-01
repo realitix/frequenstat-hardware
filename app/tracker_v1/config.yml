@@ -15,6 +15,7 @@
 # WORKER_MAX_TIME: Temps maximum (secondes) entre deux envois
 # CAPTURE_BUFFER_PACKETS: Nombre de packet à partir duquel le buffer flush dans la db
 # CAPTURE_BUFFER_TIME: Temps en secondes avant envoie dans la BDD
+# CHANNEL: Channel à écouter, -1 pour le hopping
 
 # Configuration pour le programme principal
 main:
@@ -34,3 +35,4 @@ main:
     WORKER_MAX_TIME: 1000
     CAPTURE_BUFFER_PACKETS: 10
     CAPTURE_BUFFER_TIME: 20
+    CHANNEL: 6

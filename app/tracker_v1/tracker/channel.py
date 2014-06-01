@@ -13,8 +13,13 @@ class Channel(object):
 	"""
 	 Classe gérant le channel hopping
 	"""
-	def __init__(self, iface):
+	def __init__(self, iface=None, channel=None):
+		if iface == None or \
+		   channel == None :
+			raise ValueError("Paramètres manquants")
+
 		self.iface = iface
+		self.wantChannel = channel
 		self.channel = self.getChannel()
 	
 	def update(self):
@@ -31,7 +36,11 @@ class Channel(object):
 		
 	def start(self):
 		while(True):
-			sleep(0.5) #500 ms
-			self.update()
+			if self.wantChannel == -1:
+				sleep(0.5)
+				self.update()
+			else:
+				self.setChannel(self.wantChannel)
+				sleep(3600)
 			
 		

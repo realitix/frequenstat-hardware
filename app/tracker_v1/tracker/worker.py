@@ -191,8 +191,12 @@ class Worker(object):
             else:
                 print "Status inconnu: %d" % status
 
+	def reInit(self):
+		self.hasDatas = None
+		
     def start(self):
         if self.dbReady:
             self.format()
             self.compress()
             self.send()
+            self.reInit()

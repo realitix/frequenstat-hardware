@@ -28,12 +28,15 @@ Sans ca, les données ne sont pas envoyées.
 Le script récupère le code HTTP de retour et s'il s'agit d'une erreur, il le transmet à l'API pour signaler l'erreur
 Le script peut ausi détecter l'abscence de connexion internet, dans ce cas, le script est stoppé et en attente du retour de la connexion
 
-4 - Processus d'exécution
+4 - Prérequis
 
 Les logiciels suivants sont prérequis:
 	python
 	python-scapy
 	python-numpy
+	libpcap
+	tcpdump
+	python-pytz
 
 Il suffit simplement de lancer le fichier main.py en administrateur pour laisser le programme s'éxécuter.
 

@@ -27,11 +27,18 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
+
+	if conf['WAIT_CHANNEL']:
+		time.sleep(int(conf['WAIT_CHANNEL']))
 	
 	# On intialise la carte wifi
 	initInterface(conf['IFACE'])
 	
 	# On créer le processus effectuant le channel hopping
-	channel = Channel(conf['IFACE'])
+	params = {
+		"iface": conf['IFACE'],
+		"channel": conf['CHANNEL']
+	}
+	channel = Channel(**params)
 	print "Démarrage du channel hopping"
 	channel.start()

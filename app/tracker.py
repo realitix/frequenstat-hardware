@@ -8,20 +8,26 @@
 import importlib
 import sys
 import pytz
+import signal
 from datetime import datetime
 
 # On supprime le buffer stdout
 class Unbuffered(object):
-    def __init__(self, stream):
-        self.stream = stream
-    def write(self, data):
-        self.stream.write(data.replace("\n"," [%s]\n"% str(datetime.now())))
-        self.stream.flush()
-    def __getattr__(self, attr):
-        return getattr(self.stream, attr)
+	def __init__(self, stream):
+		self.stream = stream
+	def write(self, data):
+		self.stream.write(data.replace("\n"," [%s]\n"% str(datetime.now())))
+		self.stream.flush()
+	def __getattr__(self, attr):
+		return getattr(self.stream, attr)
 sys.stdout = Unbuffered(sys.stdout)
 
+def handler(signum, frame):
+	sys.exit("Fin du script")
+
 def main():
+	signal.signal(signal.SIGTERM, handler)
+
 	# CONFIGURATION
 	boxVersionPath = "/home/realitix/git/tracker-hardware/session/boxVersion"
 
@@ -46,4 +52,4 @@ def main():
 		print "Argument invalide"
 
 if __name__ == '__main__':
-    main()
+	main()

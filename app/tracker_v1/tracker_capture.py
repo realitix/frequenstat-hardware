@@ -1,6 +1,7 @@
 # -*-coding:utf-8 -*
 
 import os
+import time
 import yaml
 from datetime import datetime
 
@@ -31,9 +32,9 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
-	
-	# On intialise la carte wifi
-	initInterface(conf['IFACE'])
+
+	if conf['WAIT_CAPTURE']:
+		time.sleep(int(conf['WAIT_CAPTURE']))
 
 	# On lance la capture
 	params = {

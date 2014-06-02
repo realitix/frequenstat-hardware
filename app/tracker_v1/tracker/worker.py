@@ -157,7 +157,7 @@ class Worker(object):
                     }
     
                     try:
-                        r = requests.post(self.urlApi, data=datas, files=files)
+                        r = requests.post(self.urlApi, data=datas, files=files, verify=False)
                         status = r.status_code
                         if status == 200 :
                             returnContent = int(r.content)
@@ -178,6 +178,12 @@ class Worker(object):
             """
             if status == 200 and returnContent == 1:
                 print "Le fichier a bien été transféré"
+            elif status == 200 and returnContent == -1:
+                print "Nom du fichier non conforme"
+            elif status == 200 and returnContent == -2:
+                print "Hash MD5 invalide"
+            elif status == 200 and returnContent == -3:
+                print "Erreur de décompression"
             elif status == 0:
                 print "Connection impossible"
             elif status == 404:

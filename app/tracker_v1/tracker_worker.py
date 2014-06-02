@@ -30,6 +30,9 @@ def main():
 				conf2 = conf2.get('main')
 				conf.update(conf2)
 
+	if conf['WAIT_WORKER']:
+		time.sleep(int(conf['WAIT_WORKER']))
+
 	while(True):
 		params = {
 			"pathFolderWaitingCompress": conf['PATH_DUMP_WAITING_COMPRESS'],

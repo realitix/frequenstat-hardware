@@ -27,6 +27,9 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
+
+	if conf['WAIT_CHANNEL']:
+		time.sleep(int(conf['WAIT_CHANNEL']))
 	
 	# On intialise la carte wifi
 	initInterface(conf['IFACE'])

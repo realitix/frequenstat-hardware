@@ -16,6 +16,9 @@
 # CAPTURE_BUFFER_PACKETS: Nombre de packet à partir duquel le buffer flush dans la db
 # CAPTURE_BUFFER_TIME: Temps en secondes avant envoie dans la BDD
 # CHANNEL: Channel à écouter, -1 pour le hopping
+# WAIT_CHANNEL: Temps d'attente avant d'exécuter channel
+# WAIT_CAPTURE: Temps d'attente avant d'exécuter capture
+# WAIT_WORKER: Temps d'attente avant d'exécuter worker
 
 # Configuration pour le programme principal
 main:
@@ -36,3 +39,6 @@ main:
     CAPTURE_BUFFER_PACKETS: 10
     CAPTURE_BUFFER_TIME: 20
     CHANNEL: 6
+    WAIT_CHANNEL: 0
+    WAIT_CAPTURE: 5
+    WAIT_WORKER: 10

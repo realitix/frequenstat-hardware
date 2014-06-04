@@ -168,6 +168,7 @@ class Worker(object):
             # On supprime le fichier lu
             if status == 200 and returnContent == 1:
                 os.remove(fileSrc)
+                print "Le fichier %s a été supprimé" % fileSrc
 
             """ 
              * 000 = la connexion internet ne fonctionne pas
@@ -196,13 +197,9 @@ class Worker(object):
                 print "Erreur du serveur"
             else:
                 print "Status inconnu: %d" % status
-
-    def reInit(self):
-        self.hasDatas = None
         
     def start(self):
         if self.dbReady:
             self.format()
             self.compress()
             self.send()
-            self.reInit()

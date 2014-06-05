@@ -118,7 +118,7 @@ class Worker(object):
         """
         # On parcourt les fichiers à compresser
         for fileName in os.listdir(self.pathFolderWaitingCompress):
-            if fileName == '.gitignore':
+            if 'gitignore' in fileName:
                 continue
             # On compresse
             compressBz2('%s/%s' % (self.pathFolderWaitingCompress, fileName))
@@ -146,7 +146,7 @@ class Worker(object):
         print "Envoie des fichiers"
         # On parcourt les fichiers a envoyer
         for fileName in os.listdir(self.pathFolderWaitingSend):
-            if fileName == '.gitignore':
+            if 'gitignore' in fileName:
                 continue
             fileSrc = "%s/%s" % (self.pathFolderWaitingSend, fileName)
             status = 0
@@ -181,6 +181,7 @@ class Worker(object):
             # On supprime le fichier lu
             if status == 200 and returnContent == 1:
                 os.remove(fileSrc)
+                print "Le fichier %s a été supprimé" % fileSrc
 
             """ 
              * 000 = la connexion internet ne fonctionne pas
@@ -209,10 +210,7 @@ class Worker(object):
                 print "Erreur du serveur"
             else:
                 print "Status inconnu: %d" % status
-
-	def reInit(self):
-		self.hasDatas = None
-		
+        
     def start(self):
         if self.offset != 0:
             self.offsetDb()
@@ -221,4 +219,3 @@ class Worker(object):
             self.format()
             self.compress()
             self.send()
-            self.reInit()

@@ -10,4 +10,4 @@ def packetHandler(p):
 		print "Paquet recu"
 
 
-sniff(iface="wlp0s20u2", prn=packetHandler)
+sniff(iface="alpha1", prn=packetHandler)

@@ -16,7 +16,8 @@ class Worker(object):
 
     def __init__(self, db=None, pathFolderWaitingCompress=None, 
         pathFolderWaitingSend=None, pathFileUserId=None, 
-        pathFileUserKey=None, pathFilePlaceId=None, pathFileBoxId=None, urlApi=None):
+        pathFileUserKey=None, pathFilePlaceId=None, pathFileBoxId=None,
+        urlApi=None, offset=0):
         
         if pathFolderWaitingCompress == None or \
            pathFolderWaitingSend == None or \
@@ -35,6 +36,7 @@ class Worker(object):
         self.db = db
         self.dbReady = True
         self.hasDatas = None
+        self.offset = offset
         
         if not os.path.exists(db):
             self.dbReady = False
@@ -90,6 +92,17 @@ class Worker(object):
          On efface pas toutes les captures dans le cas ou il y a eu une insertion depuis le format
         """
         sql = "DELETE FROM captures WHERE strftime('%s', date) <= strftime('%s', '"+self.lastDate+"');"
+        db = sqlite3.connect(self.db)
+        c = db.cursor()
+        c.execute(sql)
+        db.commit()
+        db.close()
+        
+    def offsetDb(self):
+        """
+         Cette fonction décale toutes les dates de capture de offset secondes
+        """
+        sql = "UPDATE FROM captures SET date = datetime(date, '"+str(self.offset)+" seconds') ;"
         db = sqlite3.connect(self.db)
         c = db.cursor()
         c.execute(sql)
@@ -201,6 +214,9 @@ class Worker(object):
 		self.hasDatas = None
 		
     def start(self):
+        if self.offset != 0:
+            self.offsetDb()
+            
         if self.dbReady:
             self.format()
             self.compress()

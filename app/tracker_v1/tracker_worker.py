@@ -8,6 +8,7 @@ import random
 
 from tracker.utils import *
 from tracker.worker import *
+from tracker.synchro import *
 
 """
 	Ce script gère le worker.
@@ -29,9 +30,13 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
-
+	
 	if conf['WAIT_WORKER']:
 		time.sleep(int(conf['WAIT_WORKER']))
+		
+	# On synchronise l'heure
+	sync = Synchro()
+	offset = sync.start()
 
 	while(True):
 		params = {
@@ -42,7 +47,8 @@ def main():
 			"pathFilePlaceId": conf['FILE_PLACE_ID'],
 			"pathFileBoxId": conf['FILE_BOX_ID'],
 			"urlApi": conf['URL_API'],
-			"db": conf['PATH_DB']
+			"db": conf['PATH_DB'],
+			"offset": offset
 		}
 		worker = Worker(**params)
 		print "Démarrage du worker"
@@ -50,3 +56,7 @@ def main():
 
 		# On attend le prochain envoie
 		time.sleep(random.randint(conf['WORKER_MIN_TIME'], conf['WORKER_MAX_TIME']))
+		
+		# On désactive l'offset puisque l'heure est maintenant à jour
+		offset = 0
+		

@@ -15,11 +15,11 @@ class Channel(object):
 	 Classe gérant le channel hopping
 	"""
 	def __init__(self, iface=None, channel=None):
-	    self.log = logging.getLogger()
-	    
+		self.log = logging.getLogger()
+		
 		if iface == None or \
 		   channel == None :
-		    self.log.critical("Paramètres manquants")
+			self.log.critical("Paramètres manquants")
 			raise ValueError("Paramètres manquants")
 
 		self.iface = iface

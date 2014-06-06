@@ -24,12 +24,12 @@ def initInterface(iface):
 	ex("ifconfig %s down" % (iface))
 
 	try:
-	    ex("iwconfig %s essid any" % (iface))
+		ex("iwconfig %s essid any" % (iface))
 	except subprocess.CalledProcessError:
 		print "Impossible de modifier l'essid"
 
 	try:
-	    ex("iwconfig %s key off" % (iface))
+		ex("iwconfig %s key off" % (iface))
 	except subprocess.CalledProcessError:
 		print "Impossible de modifier la cle"
 
@@ -65,32 +65,32 @@ def compressBz2(filePath):
  Créé le schema de la base sqlite
 """
 def createSchema(dbPath):
-    db = sqlite3.connect(dbPath)
-    c = db.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
-    db.commit()
-    db.close()
-    
+	db = sqlite3.connect(dbPath)
+	c = db.cursor()
+	c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
+	db.commit()
+	db.close()
+	
 """
  Configure le logger
 """
 def createLogger(fileName, logLevel):
-    options = {
-        "DEBUG": logging.DEBUG,
-        "INFO": logging.INFO,
-        "WARNING": logging.WARNING,
-        "ERROR": logging.ERROR,
-        "CRITICAL": logging.CRITICAL,
-    }
-    
-    logger = logging.getLogger()
+	options = {
+		"DEBUG": logging.DEBUG,
+		"INFO": logging.INFO,
+		"WARNING": logging.WARNING,
+		"ERROR": logging.ERROR,
+		"CRITICAL": logging.CRITICAL,
+	}
+	
+	logger = logging.getLogger()
 	logger.setLevel(options[logLevel])
 	formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 	file_handler = logging.FileHandler(fileName, 'a')
 	file_handler.setLevel(options[logLevel])
 	file_handler.setFormatter(formatter)
 	logger.addHandler(file_handler)
-    
+	
 	
 
 """

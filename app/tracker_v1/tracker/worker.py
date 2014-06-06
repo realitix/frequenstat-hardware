@@ -157,7 +157,7 @@ class Worker(object):
             
             while count > 0:
                 count = count - 1
-                self.info("Essaie a %s" % self.urlApi)
+                self.log.info("Essaie a %s" % self.urlApi)
                 with open(fileSrc, "rb") as file:
                     files = {'file': file}
                     datas = {

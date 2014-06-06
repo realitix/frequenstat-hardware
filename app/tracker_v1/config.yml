@@ -36,10 +36,10 @@ main:
     SCAPY_FILTER: "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
     WORKER_MIN_TIME: 100
     WORKER_MAX_TIME: 1000
-    CAPTURE_BUFFER_PACKETS: 10
-    CAPTURE_BUFFER_TIME: 20
+    CAPTURE_BUFFER_PACKETS: 100
+    CAPTURE_BUFFER_TIME: 30
     CHANNEL: 6
     WAIT_CHANNEL: 0
     WAIT_CAPTURE: 5
-    WAIT_WORKER: 10
+    WAIT_WORKER: 3
     LOG_LEVEL: INFO

@@ -1,6 +1,7 @@
 # -*-coding:utf-8 -*
 
 import os
+import logging
 import yaml
 from datetime import datetime
 
@@ -27,6 +28,10 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
+	
+	# Configuration des logs
+	createLogger('/tmp/tracker_channel.log', conf['LOG_LEVEL'])
+	log = logging.getLogger()
 
 	if conf['WAIT_CHANNEL']:
 		time.sleep(int(conf['WAIT_CHANNEL']))
@@ -40,5 +45,5 @@ def main():
 		"channel": conf['CHANNEL']
 	}
 	channel = Channel(**params)
-	print "Démarrage du channel hopping"
+	log.info("Démarrage du channel hopping")
 	channel.start()

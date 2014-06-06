@@ -2,6 +2,7 @@
 
 import os
 import yaml
+import logging
 from datetime import datetime
 import time
 import random
@@ -30,6 +31,14 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
+				
+	# Configuration des logs
+	createLogger('/tmp/tracker_worker.log', conf['LOG_LEVEL'])
+	log = logging.getLogger()
+	
+	# Création du schema
+	log.info('Création du schema de la base')
+	createSchema(conf['PATH_DB'])
 	
 	if conf['WAIT_WORKER']:
 		time.sleep(int(conf['WAIT_WORKER']))
@@ -51,7 +60,7 @@ def main():
 			"offset": offset
 		}
 		worker = Worker(**params)
-		print "Démarrage du worker"
+		log.info('Démarrage du worker')
 		worker.start()
 
 		# On attend le prochain envoie

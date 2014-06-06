@@ -3,6 +3,7 @@
 import os
 import sys
 import json
+import logging
 import sqlite3
 from datetime import datetime
 import requests
@@ -19,6 +20,8 @@ class Worker(object):
         pathFileUserKey=None, pathFilePlaceId=None, pathFileBoxId=None,
         urlApi=None, offset=0):
         
+        self.log = logging.getLogger()
+        
         if pathFolderWaitingCompress == None or \
            pathFolderWaitingSend == None or \
            pathFileUserId == None or \
@@ -27,20 +30,16 @@ class Worker(object):
            pathFileBoxId == None or \
            db == None or \
            urlApi == None :
-            raise ValueError("Les dossiers ou fichiers sont mals renseignés")
+            self.log.critical("Les paramètres du worker sont mauvais")
+            raise ValueError("Les paramètres du worker sont mauvais")
 
         self.pathFolderWaitingCompress = pathFolderWaitingCompress
         self.pathFolderWaitingSend = pathFolderWaitingSend
         self.urlApi = urlApi
         self.lastDate = None
         self.db = db
-        self.dbReady = True
         self.hasDatas = None
         self.offset = offset
-        
-        if not os.path.exists(db):
-            self.dbReady = False
-            print "DB inexistante"
 
         with open(pathFileUserId, "r") as file:
             self.userId = int(file.read().strip())
@@ -143,7 +142,7 @@ class Worker(object):
             - Si c'est 1, on supprime le fichier (car c'est bon)
             - Sinon on le renvoie au serveur
         """
-        print "Envoie des fichiers"
+        self.log.info("Envoie des fichiers")
         # On parcourt les fichiers a envoyer
         for fileName in os.listdir(self.pathFolderWaitingSend):
             if 'gitignore' in fileName:
@@ -154,11 +153,11 @@ class Worker(object):
             count = 3
             returnContent = 0
 
-            print "Envoie de %s" % fileSrc
+            self.log.info("Envoie de %s" % fileSrc)
             
             while count > 0:
                 count = count - 1
-                print "Essaie a %s" % self.urlApi
+                self.info("Essaie a %s" % self.urlApi)
                 with open(fileSrc, "rb") as file:
                     files = {'file': file}
                     datas = {
@@ -181,7 +180,7 @@ class Worker(object):
             # On supprime le fichier lu
             if status == 200 and returnContent == 1:
                 os.remove(fileSrc)
-                print "Le fichier %s a été supprimé" % fileSrc
+                self.log.info("Le fichier %s a été supprimé" % fileSrc)
 
             """ 
              * 000 = la connexion internet ne fonctionne pas
@@ -191,31 +190,30 @@ class Worker(object):
              * 500 = Erreur du serveur
             """
             if status == 200 and returnContent == 1:
-                print "Le fichier a bien été transféré"
+                self.log.info("Le fichier a bien été transféré")
             elif status == 200 and returnContent == -1:
-                print "Nom du fichier non conforme"
+                self.log.info("Nom du fichier non conforme")
             elif status == 200 and returnContent == -2:
-                print "Hash MD5 invalide"
+                self.log.info("Hash MD5 invalide")
             elif status == 200 and returnContent == -3:
-                print "Erreur de décompression"
+                self.log.info("Erreur de décompression")
             elif status == 0:
-                print "Connection impossible"
+                self.log.info("Connection impossible")
             elif status == 404:
-                print "JSON mal formate"
+                self.log.info("JSON mal formate")
             elif status == 403:
-                print "Mauvaise identification"
+                self.log.info("Mauvaise identification")
             elif status == 400:
-                print "Cles manquantes"
+                self.log.info("Cles manquantes")
             elif status == 500:
-                print "Erreur du serveur"
+                self.log.info("Erreur du serveur")
             else:
-                print "Status inconnu: %d" % status
+                self.log.info("Status inconnu: %d" % status)
         
     def start(self):
         if self.offset != 0:
             self.offsetDb()
             
-        if self.dbReady:
-            self.format()
-            self.compress()
-            self.send()
+        self.format()
+        self.compress()
+        self.send()

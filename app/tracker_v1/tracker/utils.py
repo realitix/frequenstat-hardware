@@ -2,7 +2,9 @@
 
 import os
 import hashlib
+import logging
 import bz2
+import sqlite3
 from tempfile import SpooledTemporaryFile
 import subprocess
 from shutil import copyfileobj
@@ -58,6 +60,37 @@ def compressBz2(filePath):
 		with bz2.BZ2File(newFilePath, 'wb', compresslevel=9) as output:
 			copyfileobj(input, output)
 	os.remove(filePath)
+	
+"""
+ Créé le schema de la base sqlite
+"""
+def createSchema(dbPath):
+    db = sqlite3.connect(dbPath)
+    c = db.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
+    db.commit()
+    db.close()
+    
+"""
+ Configure le logger
+"""
+def createLogger(fileName, logLevel):
+    options = {
+        "DEBUG": logging.DEBUG,
+        "INFO": logging.INFO,
+        "WARNING": logging.WARNING,
+        "ERROR": logging.ERROR,
+        "CRITICAL": logging.CRITICAL,
+    }
+    
+    logger = logging.getLogger()
+	logger.setLevel(options[logLevel])
+	formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
+	file_handler = logging.FileHandler(fileName, 'a')
+	file_handler.setLevel(options[logLevel])
+	file_handler.setFormatter(formatter)
+	logger.addHandler(file_handler)
+    
 	
 
 """

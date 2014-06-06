@@ -1,6 +1,7 @@
 # -*-coding:utf-8 -*
 
 import os
+import logging
 import time
 import yaml
 from datetime import datetime
@@ -32,7 +33,15 @@ def main():
 			if conf2:
 				conf2 = conf2.get('main')
 				conf.update(conf2)
+				
+	# Configuration des logs
+	createLogger('/tmp/tracker_capture.log', conf['LOG_LEVEL'])
+	log = logging.getLogger()
 
+	# Création du schema
+	log.info('Création du schema de la base')
+	createSchema(conf['PATH_DB'])
+	
 	if conf['WAIT_CAPTURE']:
 		time.sleep(int(conf['WAIT_CAPTURE']))
 
@@ -45,6 +54,6 @@ def main():
 		"nbMaxPackets": conf['CAPTURE_BUFFER_PACKETS']
 	}
 	capture = Capture(**params)
-	print "Démarrage de la capture"
+	log.info("Démarrage de la capture")
 	capture.start()
-	print "Fin de la capture"
+	log.info("Fin de la capture")

@@ -42,3 +42,4 @@ main:
     WAIT_CHANNEL: 0
     WAIT_CAPTURE: 5
     WAIT_WORKER: 10
+    LOG_LEVEL: INFO

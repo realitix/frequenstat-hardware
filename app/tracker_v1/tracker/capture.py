@@ -2,6 +2,7 @@
 
 import os
 import sys
+import logging
 from datetime import datetime
 from scapy.all import *
 import time
@@ -21,7 +22,10 @@ class Capture(object):
     """
 
     def __init__(self, iface=None, db=None, dbTimeout=120, nbMaxPackets=100, bpfFilter=None):
+        self.log = logging.getLogger()
+        
         if iface == None or db == None:
+            self.log.critical("L'interface ou le fichier sont mal renseignés")
             raise ValueError("L'interface ou le fichier sont mal renseignés")
 
         self.iface = str(iface) # Corrige une erreur de type unicode
@@ -32,14 +36,6 @@ class Capture(object):
         self.dbTimeout = dbTimeout
         self.stoptime = time.time() + self.dbTimeout
         self.db = db
-        self.createSchema()
-
-    def createSchema(self):
-        db = sqlite3.connect(self.db)
-        c = db.cursor()
-        c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
-        db.commit()
-        db.close()
 
     def commit(self):
         db = sqlite3.connect(self.db)

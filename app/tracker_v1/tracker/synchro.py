@@ -14,6 +14,7 @@ class Synchro(object):
 	def start(self):
 		response = None
 		while response is None:
+			print "Requete"
 			response = self.execute()
 			if response is None:
 				time.sleep(10)
@@ -25,7 +26,11 @@ class Synchro(object):
 			return 0
 			
 		# We reload ntp service to take the good time
-		ex('/etc/init.d/ntp restart')
+		try:
+			ex('/etc/init.d/ntp restart')
+		except subprocess.CalledProcessError:
+			print "Impossible de redemarrer ntp"
+		
 		
 		# We return the offset
 		return offset
@@ -33,11 +38,10 @@ class Synchro(object):
 	def execute(self):
 		c = ntplib.NTPClient()
 		try:
-			print "Requete"
 			response = c.request('ntp.frequenstat.com')
 			response = response.tx_time
 			print "Réponse: %s" % time.ctime(response)
-		except ntplib.NTPException:
+		except Exception:
 			print "Erreur de connexion"
 			response = None
 			

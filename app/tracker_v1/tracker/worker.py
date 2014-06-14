@@ -101,7 +101,7 @@ class Worker(object):
         """
          Cette fonction décale toutes les dates de capture de offset secondes
         """
-        sql = "UPDATE FROM captures SET date = datetime(date, '"+str(self.offset)+" seconds') ;"
+        sql = "UPDATE captures SET date = datetime(date, '"+str(self.offset)+" seconds') ;"
         db = sqlite3.connect(self.db)
         c = db.cursor()
         c.execute(sql)
@@ -216,4 +216,4 @@ class Worker(object):
             
         self.format()
         self.compress()
-        self.send()
+        #self.send()

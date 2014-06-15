@@ -216,4 +216,4 @@ class Worker(object):
             
         self.format()
         self.compress()
-        #self.send()
+        self.send()

@@ -42,9 +42,14 @@ def main():
 	log.info('Création du schema de la base')
 	createSchema(conf['PATH_DB'])
 	
+	# Attente avant le démarrage
 	if conf['WAIT_CAPTURE']:
 		time.sleep(int(conf['WAIT_CAPTURE']))
-
+		
+	# Temps réel on compresse les temps avant envoie
+	if conf['REALTIME']:
+ 		conf['CAPTURE_BUFFER_TIME'] = 2
+ 		
 	# On lance la capture
 	params = {
 		"iface": conf['IFACE'],

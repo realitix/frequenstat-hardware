@@ -75,11 +75,15 @@ class Worker(object):
         self.hasDatas = False
         for r in c.execute(sql):
             self.hasDatas = True
-            requests.append({"date": r[0], "power": r[1], "mac": r[2]})
+            self.lastDate = r[0]
+            
+            # Convert date in millisecond into classic format
+            dateClassic = datetime.fromtimestamp(round(r[0]/1000)).strftime('%Y-%m-%d %H:%M:%S')
+            
+            requests.append({"date": dateClassic, "power": r[1], "mac": r[2]})
         db.close()
 
         if self.hasDatas:
-            self.lastDate = requests[-1]['date']
             fileName = '%d-%d-%d_%s' % (self.userId, self.placeId, self.boxId, datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
             fileDest = "%s/%s" % (self.pathFolderWaitingCompress, fileName)
             with open(fileDest, "w") as f:
@@ -90,7 +94,7 @@ class Worker(object):
          Cette fonction supprime toutes les captures inférieur à la date enregistré
          On efface pas toutes les captures dans le cas ou il y a eu une insertion depuis le format
         """
-        sql = "DELETE FROM captures WHERE strftime('%s', date) <= strftime('%s', '"+self.lastDate+"');"
+        sql = "DELETE FROM captures WHERE date <= "+self.lastDate+";"
         db = sqlite3.connect(self.db)
         c = db.cursor()
         c.execute(sql)
@@ -100,8 +104,9 @@ class Worker(object):
     def offsetDb(self):
         """
          Cette fonction décale toutes les dates de capture de offset secondes
+         La date est exprimée en milliseconde
         """
-        sql = "UPDATE captures SET date = datetime(date, '"+str(self.offset)+" seconds') ;"
+        sql = "UPDATE captures SET date = date + "+self.offset*1000+";"
         db = sqlite3.connect(self.db)
         c = db.cursor()
         c.execute(sql)

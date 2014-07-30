@@ -19,6 +19,7 @@
 # WAIT_CHANNEL: Temps d'attente avant d'exécuter channel
 # WAIT_CAPTURE: Temps d'attente avant d'exécuter capture
 # WAIT_WORKER: Temps d'attente avant d'exécuter worker
+# REALTIME: Active le mode temps réel
 
 # Configuration pour le programme principal
 main:
@@ -43,3 +44,4 @@ main:
     WAIT_CAPTURE: 5
     WAIT_WORKER: 3
     LOG_LEVEL: INFO
+    REALTIME: false

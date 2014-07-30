@@ -11,3 +11,4 @@ main:
     FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId
     FILE_BOX_ID: /home/realitix/git/tracker-hardware/session/boxId
     SCAPY_FILTER: "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
+    REALTIME: false

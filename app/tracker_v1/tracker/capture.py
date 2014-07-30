@@ -70,7 +70,8 @@ class Capture(object):
         stationMac = p.addr2
 
         if stationMac is not None:
-            dateNow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        	# Date en milliseconds
+            dateNow = round(time.time()*1000)
             power = int(str(p.dBm_AntSignal))
             self.pkts.append({'date': dateNow, 'mac': stationMac, 'power': power })
 

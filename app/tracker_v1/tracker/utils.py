@@ -67,7 +67,8 @@ def compressBz2(filePath):
 def createSchema(dbPath):
 	db = sqlite3.connect(dbPath)
 	c = db.cursor()
-	c.execute('''CREATE TABLE IF NOT EXISTS captures (date TEXT, power INTEGER, mac text)''')
+	# La date est stockée en milliseconds
+	c.execute('''CREATE TABLE IF NOT EXISTS captures (date INTEGER, power INTEGER, mac text)''')
 	db.commit()
 	db.close()
 	

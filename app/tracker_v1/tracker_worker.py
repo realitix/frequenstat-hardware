@@ -64,7 +64,10 @@ def main():
 		worker.start()
 
 		# On attend le prochain envoie
-		time.sleep(random.randint(conf['WORKER_MIN_TIME'], conf['WORKER_MAX_TIME']))
+		if conf['REALTIME']:
+			time.sleep(5)
+		else:
+			time.sleep(random.randint(conf['WORKER_MIN_TIME'], conf['WORKER_MAX_TIME']))
 		
 		# On désactive l'offset puisque l'heure est maintenant à jour
 		offset = 0

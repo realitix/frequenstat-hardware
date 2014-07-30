@@ -14,7 +14,6 @@ class Synchro(object):
 	def start(self):
 		response = None
 		while response is None:
-			print "Requete"
 			response = self.execute()
 			if response is None:
 				time.sleep(10)
@@ -29,8 +28,7 @@ class Synchro(object):
 		try:
 			ex('/etc/init.d/ntp restart')
 		except subprocess.CalledProcessError:
-			print "Impossible de redemarrer ntp"
-		
+			pass
 		
 		# We return the offset
 		return offset
@@ -40,9 +38,7 @@ class Synchro(object):
 		try:
 			response = c.request('ntp.frequenstat.com')
 			response = response.tx_time
-			print "Réponse: %s" % time.ctime(response)
 		except Exception:
-			print "Erreur de connexion"
 			response = None
 			
 		return response

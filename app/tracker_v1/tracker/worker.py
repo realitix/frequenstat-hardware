@@ -94,7 +94,7 @@ class Worker(object):
          Cette fonction supprime toutes les captures inférieur à la date enregistré
          On efface pas toutes les captures dans le cas ou il y a eu une insertion depuis le format
         """
-        sql = "DELETE FROM captures WHERE date <= "+self.lastDate+";"
+        sql = "DELETE FROM captures WHERE date <= "+str(self.lastDate)+";"
         db = sqlite3.connect(self.db)
         c = db.cursor()
         c.execute(sql)

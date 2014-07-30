@@ -44,8 +44,10 @@ def main():
 		time.sleep(int(conf['WAIT_WORKER']))
 		
 	# On synchronise l'heure
+	log.info("Synchronisation de l'heure")
 	sync = Synchro()
 	offset = sync.start()
+	log.info("Fin de synchronisation de l'heure")
 
 	while(True):
 		params = {

@@ -8,13 +8,13 @@ from scapy.all import *
 import time
 import scapy_ex
 import sqlite3
-import pcapy as pcap
 
 # Permet d'utiliser libpcap https://stackoverflow.com/questions/18994242/why-isnt-scapy-capturing-vlan-tag-information
 #TODO comparer les performance entre libpcacp et RawSocket!
 # Seul libpcap permet d'utiliser les filtres
-conf.use_pcap=True
-import scapy.arch.pcapdnet 
+#import pcapy as pcap
+#conf.use_pcap=True
+#import scapy.arch.pcapdnet 
 
 class Capture(object):
     """
@@ -59,15 +59,13 @@ class Capture(object):
          - Data frame
            -> Ce qui contient toDs=1 et fromDs=0
            -> Ce qui contient toDs=0 et fromDs=0
-        
+        """
         if (
             ( p.type == 0 and p.subtype in [0, 2, 4] ) or
             ( p.type == 2 and p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') ) or
             ( p.type == 2 and not p.hasflag('FCfield', 'to-DS') and not p.hasflag('FCfield', 'from-DS') )
         ):
             stationMac = p.addr2
-        """
-        stationMac = p.addr2
 
         if stationMac is not None:
         	# Date en milliseconds

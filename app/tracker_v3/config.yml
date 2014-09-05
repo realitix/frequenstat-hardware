@@ -1,0 +1,49 @@
+# La configuration contient les éléments suivants:
+# PATH_CONFIG_PERSO: Fichier de configuration personel
+# URL_API: Url de l'api rest recevant les données
+# IFACE: Interface d'écoute des paquets
+# PATH_DB: Fichier Sqlite
+# PATH_SESSION: Dossier contenant la session
+# PATH_DUMP_WAITING_COMPRESS: Dossier de sauvegarde de fichiers en attente d'être compressé
+# PATH_DUMP_WAITING_SEND: Dossier de sauvegarde de fichiers en attente d'être envoyé sur serveur
+# FILE_USER_ID: Fichier contenant l'id de l'utilisateur
+# FILE_USER_KEY: Fichier contenant la clé de l'utilisateur
+# FILE_PLACE_ID: Fichier contenant l'id de a place
+# FILE_BOX_ID: Fichier contenant l'id de la boxe
+# SCAPY_FILTER: Filtre utilisé pour ne pas récupérer tous les paquets et optimisé l'écoute "type mgt and (subtype probe-req or subtype assoc-req or subtype reassoc-req)"
+# WORKER_MIN_TIME: Temps minimum (secondes) entre deux envois
+# WORKER_MAX_TIME: Temps maximum (secondes) entre deux envois
+# CAPTURE_BUFFER_PACKETS: Nombre de packet à partir duquel le buffer flush dans la db
+# CAPTURE_BUFFER_TIME: Temps en secondes avant envoie dans la BDD
+# CHANNEL: Channel à écouter, -1 pour le hopping
+# WAIT_CHANNEL: Temps d'attente avant d'exécuter channel
+# WAIT_CAPTURE: Temps d'attente avant d'exécuter capture
+# WAIT_WORKER: Temps d'attente avant d'exécuter worker
+# REALTIME: Active le mode temps réel
+# SERVER_PORT: Port sur lequel écouter le maitre
+
+# Configuration pour le programme principal
+main:
+    PATH_CONFIG_PERSO: /home/realitix/git/tracker-hardware/app/config_perso.yml
+    URL_API: http://client.frequenstat.com/api/v1/captures
+    IFACE: alpha1
+    PATH_DB: /home/realitix/git/tracker-hardware/tracker.db
+    PATH_SESSION: /home/realitix/git/tracker-hardware/session
+    PATH_DUMP_WAITING_COMPRESS: /home/realitix/git/tracker-hardware/dump/waiting-compress
+    PATH_DUMP_WAITING_SEND: /home/realitix/git/tracker-hardware/dump/waiting-send
+    FILE_USER_ID: /home/realitix/git/tracker-hardware/session/userId
+    FILE_USER_KEY: /home/realitix/git/tracker-hardware/session/userKey
+    FILE_PLACE_ID: /home/realitix/git/tracker-hardware/session/placeId
+    FILE_BOX_ID: /home/realitix/git/tracker-hardware/session/boxId
+    SCAPY_FILTER: ""
+    WORKER_MIN_TIME: 100
+    WORKER_MAX_TIME: 1000
+    CAPTURE_BUFFER_PACKETS: 100
+    CAPTURE_BUFFER_TIME: 30
+    CHANNEL: 6
+    WAIT_CHANNEL: 0
+    WAIT_CAPTURE: 5
+    WAIT_WORKER: 3
+    LOG_LEVEL: INFO
+    REALTIME: true
+    SERVER_PORT: 3344

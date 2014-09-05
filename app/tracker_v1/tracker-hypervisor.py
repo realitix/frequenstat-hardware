@@ -28,7 +28,7 @@ def main():
 
 	# CONFIGURATION
 	logPath = "/home/realitix/git/tracker-hardware/logs/"
-	appPath = "/home/realitix/git/tracker-hardware/app/tracker.py"
+	appPath = "/home/realitix/git/tracker-hardware/app/tracker_v1/tracker.py"
 
 	if not os.path.isdir(logPath):
 		print "Repertoire des logs inexistant"
